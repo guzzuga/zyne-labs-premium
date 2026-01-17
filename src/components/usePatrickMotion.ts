@@ -1,239 +1,129 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 export function usePatrickMotion() {
-  useLayoutEffect(() => {
-    let ctx: any;
-    let mm: any;
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-    // simpan referensi gsap & ScrollTrigger untuk cleanup
-    let gsapRef: any = null;
-    let stRef: any = null;
+    gsap.registerPlugin(ScrollTrigger);
 
-    let cancelled = false;
+    // Respect reduced motion
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
 
-    (async () => {
-      try {
-        const gsapModule = await import("gsap");
-        const stModule = await import("gsap/ScrollTrigger");
+    // GSAP context = anti double init saat Fast Refresh
+    const ctx = gsap.context(() => {
+      // Kill old triggers (fast refresh safety)
+      ScrollTrigger.getAll().forEach((t) => t.kill());
 
-        const gsap = (gsapModule as any).gsap || (gsapModule as any).default || gsapModule;
-        const ScrollTrigger =
-          (stModule as any).ScrollTrigger || (stModule as any).default || stModule;
+      // =========================
+      // HERO ENTER (biarkan sekali saja)
+      // =========================
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        if (cancelled) return;
+      const kicker = document.querySelector('[data-hero="kicker"]');
+      const title = document.querySelector('[data-hero="title"]');
+      const desc = document.querySelector('[data-hero="desc"]');
+      const cta = document.querySelector('[data-hero="cta"]');
+      const pills = gsap.utils.toArray<HTMLElement>("[data-pill]");
 
-        gsapRef = gsap;
-        stRef = ScrollTrigger;
+      // Init states (avoid flicker)
+      gsap.set([kicker, desc, cta], { autoAlpha: 0, y: 16 });
+      gsap.set(title, { autoAlpha: 0, y: 24, filter: "blur(10px)" });
+      gsap.set(pills, { autoAlpha: 0, y: 10 });
 
-        gsap.registerPlugin(ScrollTrigger);
+      tl.to(kicker, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.05)
+        .to(title, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9 }, 0.1)
+        .to(desc, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.25)
+        .to(cta, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.32)
+        .to(pills, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.04 }, 0.38);
 
-        // premium defaults
-        gsap.defaults({ ease: "power3.out", duration: 0.8 });
+      // =========================
+      // REVEAL GROUP ON SCROLL (REPEAT)
+      // =========================
+      document.querySelectorAll<HTMLElement>("[data-reveal-group]").forEach((group) => {
+        const items = gsap.utils.toArray<HTMLElement>(group.querySelectorAll("[data-reveal-item]"));
+        if (!items.length) return;
 
-        ScrollTrigger.config({
-          limitCallbacks: true,
-          ignoreMobileResize: true,
+        // set awal, supaya bisa “muncul lagi” saat masuk lagi
+        gsap.set(items, { autoAlpha: 0, y: 18, filter: "blur(5px)" });
+
+        ScrollTrigger.create({
+          trigger: group,
+          start: "top 80%",
+          end: "bottom 60%",
+          // KUNCI: restart saat masuk, reverse saat keluar balik
+          toggleActions: "restart reverse restart reverse",
+
+          onEnter: () => {
+            gsap.to(items, {
+              autoAlpha: 1,
+              y: 0,
+              filter: "blur(0px)",
+              duration: 0.8,
+              ease: "power3.out",
+              stagger: 0.08,
+              overwrite: "auto",
+            });
+          },
+
+          onLeaveBack: () => {
+            gsap.to(items, {
+              autoAlpha: 0,
+              y: 18,
+              filter: "blur(5px)",
+              duration: 0.45,
+              ease: "power2.inOut",
+              stagger: 0.04,
+              overwrite: "auto",
+            });
+          },
         });
+      });
 
-        const prefersReduced =
-          typeof window !== "undefined" &&
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // =========================
+      // LIGHT PARALLAX for GIF FX
+      // add wrapper: <div data-fx="parallax"> <LuxuryGif .../> </div>
+      // =========================
+      document.querySelectorAll<HTMLElement>('[data-fx="parallax"]').forEach((el) => {
+        gsap.to(el, {
+          y: -28,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+      });
 
-        ctx = gsap.context(() => {
-          /* ================= INTRO / HERO ================= */
-          const heroKicker = document.querySelector('[data-hero="kicker"]');
-          const heroTitle = document.querySelector('[data-hero="title"]');
-          const heroDesc = document.querySelector('[data-hero="desc"]');
-          const heroCta = document.querySelector('[data-hero="cta"]');
-
-          const heroChars =
-            heroTitle ? Array.from(heroTitle.querySelectorAll(".hero-dd__char")) : [];
-
-          const baseIntro = [heroKicker, heroTitle, heroDesc, heroCta].filter(
-            Boolean
-          ) as Element[];
-
-          if (!prefersReduced) {
-            gsap.set(baseIntro, { opacity: 0 });
-
-            if (heroKicker) gsap.set(heroKicker, { y: 10, filter: "blur(10px)" });
-            if (heroDesc) gsap.set(heroDesc, { y: 14, filter: "blur(12px)" });
-            if (heroCta) gsap.set(heroCta, { y: 12, filter: "blur(10px)" });
-
-            if (heroChars.length) {
-              gsap.set(heroChars, {
-                opacity: 0,
-                y: 18,
-                rotateX: 14,
-                filter: "blur(14px)",
-                transformPerspective: 900,
-                transformOrigin: "50% 100%",
-              });
-              gsap.set(heroTitle, { letterSpacing: "0.08em" });
-            } else if (heroTitle) {
-              gsap.set(heroTitle, { y: 18, filter: "blur(16px)" });
-            }
-
-            const intro = gsap.timeline({ delay: 0.06 });
-
-            intro
-              .to(heroKicker, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55 }, 0)
-              .to(heroTitle, { opacity: 1, duration: 0.01 }, 0.08);
-
-            if (heroChars.length) {
-              intro
-                .to(
-                  heroChars,
-                  {
-                    opacity: 1,
-                    y: 0,
-                    rotateX: 0,
-                    filter: "blur(0px)",
-                    duration: 0.78,
-                    stagger: { each: 0.028, from: "start" },
-                    ease: "power3.out",
-                  },
-                  0.10
-                )
-                .to(
-                  heroTitle,
-                  { letterSpacing: "0em", duration: 0.9, ease: "power2.out" },
-                  0.16
-                );
-            } else if (heroTitle) {
-              intro.to(heroTitle, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.85 }, 0.1);
-            }
-
-            intro
-              .to(heroDesc, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.72 }, 0.32)
-              .to(heroCta, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.64 }, 0.40);
-          } else {
-            // reduced motion: langsung tampil
-            baseIntro.forEach((el) => ((el as HTMLElement).style.opacity = "1"));
-          }
-
-          /* ================= SCROLL REVEAL ================= */
-          const groups = Array.from(
-            document.querySelectorAll<HTMLElement>("[data-reveal-group]")
-          );
-
-          if (!prefersReduced) {
-            groups.forEach((group) => {
-              const items = Array.from(
-                group.querySelectorAll<HTMLElement>("[data-reveal-item]")
-              );
-              if (!items.length) return;
-
-              gsap.set(items, {
-                opacity: 0,
-                y: 16,
-                filter: "blur(10px)",
-                transform: "translateZ(0)",
-              });
-
-              gsap.to(items, {
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-                duration: 0.75,
-                stagger: 0.08,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: group,
-                  start: "top 82%",
-                  end: "bottom 55%",
-                  toggleActions: "play none none reverse",
-                  fastScrollEnd: true,
-                  preventOverlaps: true,
-                },
-              });
-            });
-
-            // micro parallax halus untuk elemen hero (optional)
-            const parallaxTargets = Array.from(
-              document.querySelectorAll<HTMLElement>("[data-hero]")
-            );
-            parallaxTargets.forEach((el) => {
-              gsap.to(el, {
-                y: -8,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: el,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 0.6,
-                },
-              });
-            });
-          }
-
-          /* ================= HOVER (DESKTOP ONLY) ================= */
-          mm = gsap.matchMedia();
-          mm.add("(hover: hover) and (pointer: fine)", () => {
-            const cards = Array.from(
-              document.querySelectorAll<HTMLElement>(".lux-border, .glass")
-            );
-
-            cards.forEach((card) => {
-              const onEnter = () => {
-                gsap.to(card, { y: -2, duration: 0.22, ease: "power2.out" });
-              };
-              const onLeave = () => {
-                gsap.to(card, { y: 0, duration: 0.26, ease: "power2.out" });
-              };
-
-              card.addEventListener("mouseenter", onEnter);
-              card.addEventListener("mouseleave", onLeave);
-
-              (card as any).__pm_cleanup = () => {
-                card.removeEventListener("mouseenter", onEnter);
-                card.removeEventListener("mouseleave", onLeave);
-              };
-            });
-
-            return () => {
-              cards.forEach((c: any) => c.__pm_cleanup?.());
-            };
-          });
-
-          // refresh trigger positions once layout is stable
-          requestAnimationFrame(() => ScrollTrigger.refresh());
-        }, document);
-      } catch (e) {
-        // biar app tidak crash walau animasi gagal load
-        console.error("usePatrickMotion error:", e);
+      // =========================
+      // Header feel (smooth)
+      // =========================
+      const header = document.querySelector<HTMLElement>("header");
+      if (header) {
+        gsap.to(header, {
+          backgroundColor: "rgba(0,0,0,0.72)",
+          // backdropFilter kadang berat; ini halus + aman
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top -60",
+            end: "top -200",
+            scrub: true,
+          },
+        });
       }
-    })();
+
+      // Refresh triggers (important)
+      ScrollTrigger.refresh();
+    });
 
     return () => {
-      cancelled = true;
-
-      try {
-        document
-          .querySelectorAll<HTMLElement>(".lux-border, .glass")
-          .forEach((c: any) => c.__pm_cleanup?.());
-      } catch {}
-
-      try {
-        mm?.revert?.();
-      } catch {}
-
-      try {
-        ctx?.revert?.();
-      } catch {}
-
-      // kill all ScrollTriggers safely (tanpa require)
-      try {
-        stRef?.getAll?.().forEach((t: any) => t.kill());
-      } catch {}
-
-      // optional: clear gsap inline props if needed
-      try {
-        gsapRef?.killTweensOf?.("*");
-      } catch {}
+      ctx.revert(); // auto kill animations + triggers created in context
     };
   }, []);
 }
