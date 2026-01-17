@@ -1,129 +1,262 @@
 "use client";
 
-import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useLayoutEffect } from "react";
 
 export function usePatrickMotion() {
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  useLayoutEffect(() => {
+    let ctx: any;
+    let mm: any;
+    let killed = false;
 
-    gsap.registerPlugin(ScrollTrigger);
+    (async () => {
+      // Dynamic import biar aman di Next.js App Router
+      const gsapModule = await import("gsap");
+      const stModule = await import("gsap/ScrollTrigger");
 
-    // Respect reduced motion
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+      const gsap = gsapModule.gsap || gsapModule.default || gsapModule;
+      const ScrollTrigger =
+        stModule.ScrollTrigger || (stModule as any).default || stModule;
 
-    // GSAP context = anti double init saat Fast Refresh
-    const ctx = gsap.context(() => {
-      // Kill old triggers (fast refresh safety)
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (killed) return;
 
-      // =========================
-      // HERO ENTER (biarkan sekali saja)
-      // =========================
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      gsap.registerPlugin(ScrollTrigger);
 
-      const kicker = document.querySelector('[data-hero="kicker"]');
-      const title = document.querySelector('[data-hero="title"]');
-      const desc = document.querySelector('[data-hero="desc"]');
-      const cta = document.querySelector('[data-hero="cta"]');
-      const pills = gsap.utils.toArray<HTMLElement>("[data-pill]");
+      // Global defaults: premium feel
+      gsap.defaults({
+        ease: "power3.out",
+        duration: 0.8,
+      });
 
-      // Init states (avoid flicker)
-      gsap.set([kicker, desc, cta], { autoAlpha: 0, y: 16 });
-      gsap.set(title, { autoAlpha: 0, y: 24, filter: "blur(10px)" });
-      gsap.set(pills, { autoAlpha: 0, y: 10 });
+      ScrollTrigger.config({
+        // bikin scrub + snapping terasa halus saat scroll cepat
+        limitCallbacks: true,
+        ignoreMobileResize: true,
+      });
 
-      tl.to(kicker, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.05)
-        .to(title, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9 }, 0.1)
-        .to(desc, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.25)
-        .to(cta, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.32)
-        .to(pills, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.04 }, 0.38);
+      // Helper: cek reduce motion
+      const prefersReduced =
+        typeof window !== "undefined" &&
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      // =========================
-      // REVEAL GROUP ON SCROLL (REPEAT)
-      // =========================
-      document.querySelectorAll<HTMLElement>("[data-reveal-group]").forEach((group) => {
-        const items = gsap.utils.toArray<HTMLElement>(group.querySelectorAll("[data-reveal-item]"));
-        if (!items.length) return;
+      // NOTE: semua animasi di-scope ke document biar gampang cleanup
+      ctx = gsap.context(() => {
+        // ====== INTRO / HERO (first load) ======
+        const heroKicker = document.querySelector('[data-hero="kicker"]');
+        const heroTitle = document.querySelector('[data-hero="title"]');
+        const heroDesc = document.querySelector('[data-hero="desc"]');
+        const heroCta = document.querySelector('[data-hero="cta"]');
 
-        // set awal, supaya bisa “muncul lagi” saat masuk lagi
-        gsap.set(items, { autoAlpha: 0, y: 18, filter: "blur(5px)" });
+        // Per-letter support (kalau ada)
+        const heroChars = heroTitle
+          ? Array.from(heroTitle.querySelectorAll(".hero-dd__char"))
+          : [];
 
-        ScrollTrigger.create({
-          trigger: group,
-          start: "top 80%",
-          end: "bottom 60%",
-          // KUNCI: restart saat masuk, reverse saat keluar balik
-          toggleActions: "restart reverse restart reverse",
+        const baseIntro = [heroKicker, heroTitle, heroDesc, heroCta].filter(
+          Boolean
+        ) as Element[];
 
-          onEnter: () => {
+        // Set initial state
+        if (!prefersReduced) {
+          gsap.set(baseIntro, { opacity: 0 });
+
+          if (heroKicker) gsap.set(heroKicker, { y: 10, filter: "blur(10px)" });
+          if (heroDesc) gsap.set(heroDesc, { y: 14, filter: "blur(12px)" });
+          if (heroCta) gsap.set(heroCta, { y: 12, filter: "blur(10px)" });
+
+          // Kalau ada per-letter, lebih “mewah”
+          if (heroChars.length) {
+            gsap.set(heroChars, {
+              opacity: 0,
+              y: 18,
+              rotateX: 14,
+              filter: "blur(14px)",
+              transformPerspective: 900,
+              transformOrigin: "50% 100%",
+            });
+
+            // tracking awal sedikit renggang lalu rapih (feel “tersusun”)
+            gsap.set(heroTitle, { letterSpacing: "0.08em" });
+          } else if (heroTitle) {
+            gsap.set(heroTitle, { y: 18, filter: "blur(16px)" });
+          }
+
+          const intro = gsap.timeline({ delay: 0.06 });
+
+          intro
+            .to(heroKicker, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55 }, 0)
+            .to(heroTitle, { opacity: 1, duration: 0.01 }, 0.08);
+
+          if (heroChars.length) {
+            intro
+              .to(
+                heroChars,
+                {
+                  opacity: 1,
+                  y: 0,
+                  rotateX: 0,
+                  filter: "blur(0px)",
+                  duration: 0.78,
+                  stagger: { each: 0.028, from: "start" },
+                  ease: "power3.out",
+                },
+                0.10
+              )
+              .to(
+                heroTitle,
+                { letterSpacing: "0em", duration: 0.9, ease: "power2.out" },
+                0.16
+              );
+          } else if (heroTitle) {
+            intro.to(
+              heroTitle,
+              { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.85 },
+              0.10
+            );
+          }
+
+          intro
+            .to(heroDesc, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.72 }, 0.32)
+            .to(heroCta, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.64 }, 0.40);
+        } else {
+          // Reduced motion: langsung tampil
+          baseIntro.forEach((el) => (el as HTMLElement).style.opacity = "1");
+        }
+
+        // ====== SCROLL REVEAL (premium) ======
+        // Pattern: [data-reveal-group] membungkus beberapa [data-reveal-item]
+        const groups = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-reveal-group]")
+        );
+
+        if (!prefersReduced) {
+          groups.forEach((group) => {
+            const items = Array.from(
+              group.querySelectorAll<HTMLElement>("[data-reveal-item]")
+            );
+
+            if (!items.length) return;
+
+            // Initial state (halus, ga lebay)
+            gsap.set(items, {
+              opacity: 0,
+              y: 16,
+              filter: "blur(10px)",
+              transform: "translateZ(0)",
+            });
+
             gsap.to(items, {
-              autoAlpha: 1,
+              opacity: 1,
               y: 0,
               filter: "blur(0px)",
-              duration: 0.8,
-              ease: "power3.out",
+              duration: 0.75,
               stagger: 0.08,
-              overwrite: "auto",
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: group,
+                start: "top 82%",
+                end: "bottom 55%",
+                toggleActions: "play none none reverse",
+                fastScrollEnd: true,
+                preventOverlaps: true,
+              },
             });
-          },
+          });
 
-          onLeaveBack: () => {
-            gsap.to(items, {
-              autoAlpha: 0,
-              y: 18,
-              filter: "blur(5px)",
-              duration: 0.45,
-              ease: "power2.inOut",
-              stagger: 0.04,
-              overwrite: "auto",
+          // ====== MICRO PARALLAX (lux) ======
+          // Parallax halus untuk elemen yang punya data-hero / fx orb / dll
+          const parallaxTargets: HTMLElement[] = [
+            ...Array.from(document.querySelectorAll<HTMLElement>("[data-hero]")),
+          ];
+
+          parallaxTargets.forEach((el) => {
+            // hanya yang terlihat “besar” biar gak ganggu
+            // (kamu bisa tambahin class khusus kalau mau)
+            gsap.to(el, {
+              y: -8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.6,
+              },
             });
-          },
-        });
-      });
+          });
+        }
 
-      // =========================
-      // LIGHT PARALLAX for GIF FX
-      // add wrapper: <div data-fx="parallax"> <LuxuryGif .../> </div>
-      // =========================
-      document.querySelectorAll<HTMLElement>('[data-fx="parallax"]').forEach((el) => {
-        gsap.to(el, {
-          y: -28,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 0.6,
-          },
-        });
-      });
+        // ====== HOVER (desktop only) lebih “mahal” ======
+        mm = gsap.matchMedia();
 
-      // =========================
-      // Header feel (smooth)
-      // =========================
-      const header = document.querySelector<HTMLElement>("header");
-      if (header) {
-        gsap.to(header, {
-          backgroundColor: "rgba(0,0,0,0.72)",
-          // backdropFilter kadang berat; ini halus + aman
-          scrollTrigger: {
-            trigger: document.body,
-            start: "top -60",
-            end: "top -200",
-            scrub: true,
-          },
-        });
-      }
+        mm.add("(hover: hover) and (pointer: fine)", () => {
+          // Card hover “lift” micro—bikin terasa premium tapi gak lebay
+          const cards = Array.from(
+            document.querySelectorAll<HTMLElement>(".lux-border, .glass")
+          );
 
-      // Refresh triggers (important)
-      ScrollTrigger.refresh();
-    });
+          cards.forEach((card) => {
+            const onEnter = () => {
+              gsap.to(card, {
+                y: -2,
+                duration: 0.22,
+                ease: "power2.out",
+              });
+            };
+            const onLeave = () => {
+              gsap.to(card, {
+                y: 0,
+                duration: 0.26,
+                ease: "power2.out",
+              });
+            };
+
+            card.addEventListener("mouseenter", onEnter);
+            card.addEventListener("mouseleave", onLeave);
+
+            // cleanup per-element
+            (card as any).__pm_cleanup = () => {
+              card.removeEventListener("mouseenter", onEnter);
+              card.removeEventListener("mouseleave", onLeave);
+            };
+          });
+
+          return () => {
+            cards.forEach((c: any) => c.__pm_cleanup?.());
+          };
+        });
+
+        // ====== PERF: refresh once after layout ======
+        // Biar trigger posisi akurat (fonts/hero height)
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+      }, document);
+    })();
 
     return () => {
-      ctx.revert(); // auto kill animations + triggers created in context
+      killed = true;
+
+      try {
+        // cleanup hover listeners
+        document
+          .querySelectorAll<HTMLElement>(".lux-border, .glass")
+          .forEach((c: any) => c.__pm_cleanup?.());
+      } catch {}
+
+      try {
+        mm?.revert?.();
+      } catch {}
+
+      try {
+        ctx?.revert?.();
+      } catch {}
+
+      try {
+        // kill triggers created (safety)
+        // (kalau ScrollTrigger belum ke-load, ini aman karena try/catch)
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const st = require("gsap/ScrollTrigger");
+        const ScrollTrigger = st.ScrollTrigger || st.default || st;
+        ScrollTrigger?.getAll?.().forEach((t: any) => t.kill());
+      } catch {}
     };
   }, []);
 }
