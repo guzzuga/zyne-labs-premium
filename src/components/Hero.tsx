@@ -20,26 +20,20 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
       {/* Animated Orb Background - VISIBLE */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-[15%] right-[5%] w-[40%] h-[40%] md:w-[30%] md:h-[30%] rounded-full opacity-60 md:opacity-80 animate-orb-rotate z-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] md:w-[45%] md:h-[45%] rounded-full opacity-70 md:opacity-80 animate-orb-rotate z-0">
           <Image
-            src="/fx/orb.gif"
+            src="/fx/soon.gif"
             alt="Animated Orb"
             fill
             className="object-contain"
             priority
-            sizes="(max-width: 768px) 40vw, 30vw"
-          />
-        </div>
-        <div className="absolute bottom-[20%] left-[10%] w-[35%] h-[35%] md:w-[25%] md:h-[25%] rounded-full opacity-40 md:opacity-60 animate-orb-rotate z-0" style={{ animationDirection: 'reverse', animationDuration: '25s' }}>
-          <Image
-            src="/fx/orb.gif"
-            alt="Animated Orb Secondary"
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 35vw, 25vw"
+            sizes="(max-width: 768px) 60vw, 45vw"
           />
         </div>
       </div>
+
+      {/* Dark overlay to blend GIF with background */}
+      <div className="pointer-events-none absolute inset-0 bg-[#050816]/80 z-[1]" />
 
       {/* Premium ambient glow */}
       <div className="pointer-events-none absolute inset-0">
