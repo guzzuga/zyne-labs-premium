@@ -20,20 +20,21 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
       {/* Animated GIF Background - Behind heading text */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-        <div className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[70%] h-[70%] md:w-[50%] md:h-[50%] rounded-full animate-orb-rotate">
+        {/* Mobile: larger, lower position | Desktop: smaller, higher position */}
+        <div className="absolute top-[20%] md:top-[15%] left-1/2 -translate-x-1/2 w-[90%] md:w-[55%] h-[90%] md:h-[55%] rounded-full animate-orb-rotate">
           <Image
             src="/fx/soon.gif"
             alt="Animated Orb"
             fill
-            className="object-contain opacity-60 md:opacity-70"
+            className="object-contain opacity-50 md:opacity-70"
             priority
-            sizes="(max-width: 768px) 70vw, 50vw"
+            sizes="(max-width: 768px) 90vw, 55vw"
           />
         </div>
       </div>
 
-      {/* Dark overlay - lighter so GIF shows through */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/70 via-[#050816]/50 to-[#050816]/80 z-[1]" />
+      {/* Dark overlay - Mobile: lighter | Desktop: darker for contrast */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/60 via-[#050816]/40 to-[#050816]/80 md:from-[#050816]/70 md:via-[#050816]/50 md:to-[#050816]/80 z-[1]" />
 
       {/* Premium ambient glow */}
       <div className="pointer-events-none absolute inset-0">
