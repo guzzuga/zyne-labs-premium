@@ -18,22 +18,22 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
-      {/* Animated GIF Background - Centered - ABOVE overlay */}
+      {/* Animated GIF Background - Behind heading text */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] md:w-[40%] md:h-[40%] rounded-full animate-orb-rotate">
+        <div className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[70%] h-[70%] md:w-[50%] md:h-[50%] rounded-full animate-orb-rotate">
           <Image
             src="/fx/soon.gif"
             alt="Animated Orb"
             fill
-            className="object-contain opacity-40 md:opacity-50"
+            className="object-contain opacity-60 md:opacity-70"
             priority
-            sizes="(max-width: 768px) 50vw, 40vw"
+            sizes="(max-width: 768px) 70vw, 50vw"
           />
         </div>
       </div>
 
-      {/* Dark overlay to blend GIF with background - BELOW GIF */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/80 via-[#050816]/60 to-[#050816]/80 z-[1]" />
+      {/* Dark overlay - lighter so GIF shows through */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/70 via-[#050816]/50 to-[#050816]/80 z-[1]" />
 
       {/* Premium ambient glow */}
       <div className="pointer-events-none absolute inset-0">
