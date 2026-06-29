@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Background from "@/components/Background";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import TrustMarquee from "@/components/TrustMarquee";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import Stats from "@/components/Stats";
@@ -31,6 +32,7 @@ export default function Page() {
       <Nav />
       <main className="relative z-10">
         <Hero />
+        <About />
         <TrustMarquee />
         <FeaturesGrid />
         <Stats />

@@ -183,6 +183,11 @@ body {
   100% { background-position: 200% 0; }
 }
 
+@keyframes orb-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
 }
@@ -201,6 +206,10 @@ body {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-orb-rotate {
+  animation: orb-rotate 20s linear infinite;
 }
 
 .shimmer-line {
