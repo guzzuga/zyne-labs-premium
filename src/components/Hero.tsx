@@ -21,7 +21,7 @@ export default function Hero() {
       {/* Animated GIF Background - Behind heading text */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
         {/* Mobile: larger, centered | Desktop: smaller, higher position */}
-        <div className="absolute top-[15%] md:top-[10%] left-1/2 -translate-x-1/2 -translate-y-[20%] md:-translate-y-[10%] w-[80%] md:w-[55%] h-[80%] md:h-[55%] rounded-full animate-orb-rotate">
+        <div className="absolute top-[15%] md:top-[10%] left-1/2 -translate-x-1/2 -translate-y-[20%] md:-translate-y-[10%] w-[80%] md:w-[55%] h-[80%] md:h-[55%] rounded-full">
           <Image
             src="/fx/soon.gif"
             alt="Animated Orb"
