@@ -8,7 +8,7 @@ const PLANS = [
   {
     name: "Starter",
     desc: "Perfect for early-stage startups and small projects.",
-    price: { monthly: 499, yearly: 4990 },
+    price: { monthly: 299, yearly: 2990 },
     features: [
       "1 AI Agent",
       "5K API requests/month",
@@ -22,7 +22,7 @@ const PLANS = [
   {
     name: "Growth",
     desc: "Ideal for growing businesses scaling their AI infrastructure.",
-    price: { monthly: 1499, yearly: 14990 },
+    price: { monthly: 799, yearly: 7990 },
     features: [
       "5 AI Agents",
       "50K API requests/month",
@@ -37,7 +37,7 @@ const PLANS = [
   {
     name: "Enterprise",
     desc: "For organizations needing custom solutions and dedicated support.",
-    price: { monthly: 4999, yearly: 49990 },
+    price: { monthly: 1999, yearly: 19990 },
     features: [
       "Unlimited AI Agents",
       "Unlimited API requests",
@@ -51,6 +51,8 @@ const PLANS = [
     popular: false,
   },
 ];
+
+const CATEGORIES = ["All", "AI & Machine Learning", "Mobile Development", "Backend Infrastructure"];
 
 const containerVariants = {
   hidden: {},
@@ -73,7 +75,7 @@ export default function Pricing() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section id="pricing" className="relative px-4 py-20 sm:px-6 md:py-28">
+    <section id="pricing" className="relative px-4 py-20 sm:px-6 md:py-28 overflow-hidden">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-[30%] left-[20%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[120px]" />
@@ -141,7 +143,7 @@ export default function Pricing() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-16 grid gap-8 lg:grid-cols-3"
+          className="mt-16 grid gap-6 sm:gap-8 lg:grid-cols-3"
         >
           {PLANS.map((plan) => (
             <motion.div
@@ -160,7 +162,7 @@ export default function Pricing() {
                   
                   {/* Card content */}
                   <div className="relative h-full rounded-[24px] bg-[#0B0F1F] border border-white/10 p-[2px]">
-                    <div className="h-full rounded-[22px] bg-gradient-to-b from-[#0F172A] to-[#0B0F1F] p-7 md:p-8">
+                    <div className="h-full rounded-[22px] bg-gradient-to-b from-[#0F172A] to-[#0B0F1F] p-6 sm:p-7 md:p-8">
                       <PricingCard plan={plan} yearly={yearly} popular />
                     </div>
                   </div>
@@ -178,6 +180,18 @@ export default function Pricing() {
               )}
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Trust badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-sm text-muted/60 mb-2">30-day money-back guarantee · No credit card required</p>
+          <p className="text-xs text-muted/40">All prices in USD. Cancel anytime.</p>
         </motion.div>
       </div>
     </section>
@@ -210,13 +224,13 @@ function PricingCard({
       <p className="mt-1.5 text-sm text-muted/80">{plan.desc}</p>
 
       <div className="mt-7 flex items-baseline gap-1.5">
-        <span className="text-5xl font-bold tracking-tight bg-gradient-to-br from-white via-white to-white/60 bg-clip-text text-transparent">
+        <span className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-br from-white via-white to-white/60 bg-clip-text text-transparent">
           ${price.toLocaleString()}
         </span>
         <span className="text-sm text-muted/60">{period}</span>
       </div>
 
-      <ul className="mt-8 flex-1 space-y-3.5">
+      <ul className="mt-8 flex-1 space-y-3 sm:space-y-3.5">
         {plan.features.map((f) => (
           <li key={f} className="flex items-start gap-3 text-sm text-muted/80">
             <Icons.Check className={`mt-0.5 h-4.5 w-4.5 shrink-0 ${popular ? 'text-primary' : 'text-primary/70'}`} />

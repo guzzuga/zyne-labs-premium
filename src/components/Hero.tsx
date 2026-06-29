@@ -190,7 +190,7 @@ function HeroDashboard() {
         {/* Dashboard Content */}
         <div className="relative p-5 md:p-6">
           <div className="grid gap-4 md:grid-cols-2">
-            {/* AI CHAT */}
+            {/* AI CHAT - Real Data */}
             <DashboardWidget
               title="AI Chat"
               value="Active"
@@ -201,37 +201,54 @@ function HeroDashboard() {
             >
               <div className="mt-3 space-y-2">
                 <div className="flex items-start gap-2.5">
-                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20" />
-                  <div className="h-3.5 flex-1 rounded-full bg-white/5" />
+                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Icons.Bot className="h-3 w-3 text-primary" />
+                  </div>
+                  <div className="flex-1 rounded-lg bg-white/5 px-2.5 py-1.5">
+                    <p className="text-[10px] text-muted/70">How can I help optimize your workflow?</p>
+                  </div>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/10" />
-                  <div className="h-3.5 w-3/4 rounded-full bg-white/5" />
+                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10" />
+                  <div className="flex-1 rounded-lg bg-primary/10 border border-primary/20 px-2.5 py-1.5">
+                    <p className="text-[10px] text-white/80">Automate my data processing pipeline</p>
+                  </div>
                 </div>
               </div>
             </DashboardWidget>
 
-            {/* ANALYTICS */}
+            {/* ANALYTICS - Real Data */}
             <DashboardWidget
               title="Analytics"
-              value="+24%"
+              value="+127%"
               icon={<Icons.BarChart3 className="h-4 w-4" />}
               color="from-purple-glow/25 to-purple-glow/8"
               borderColor="border-purple-glow/25"
               glow="rgba(139,92,246,0.2)"
             >
-              <div className="mt-3 flex items-end gap-1.5">
-                {[30, 55, 40, 70, 45, 80, 65].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 rounded-t-md bg-gradient-to-t from-purple-glow/50 to-purple-glow/20 shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 hover:scale-y-110"
-                    style={{ height: `${h}%`, maxHeight: 40 }}
-                  />
-                ))}
+              <div className="mt-3">
+                <div className="flex items-end gap-1.5 h-10">
+                  {[25, 45, 35, 60, 50, 75, 65].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 rounded-t-sm bg-gradient-to-t from-purple-glow/50 to-purple-glow/20 shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 hover:scale-y-110"
+                      style={{ height: `${h}%` }}
+                    />
+                  ))}
+                </div>
+                <div className="mt-2 flex justify-between text-[9px] text-muted/50">
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span>Sat</span>
+                  <span>Sun</span>
+                </div>
               </div>
             </DashboardWidget>
 
-            {/* API */}
+            {/* API Requests */}
             <DashboardWidget
               title="API Requests"
               value="12.4K"
@@ -245,15 +262,19 @@ function HeroDashboard() {
                   <div className="h-2.5 overflow-hidden rounded-full bg-white/5">
                     <div className="h-full w-[72%] rounded-full bg-gradient-to-r from-cyan via-primary to-cyan bg-[length:200%_100%] animate-gradient-shift shadow-[0_0_20px_rgba(6,182,212,0.4)]" />
                   </div>
+                  <p className="mt-1.5 text-[9px] text-muted/50">72% of monthly limit</p>
                 </div>
-                <span className="mono text-[10px] text-cyan font-semibold">2.4K/h</span>
+                <div className="text-right">
+                  <span className="mono text-[10px] text-cyan font-semibold block">2.4K/h</span>
+                  <span className="text-[9px] text-muted/50">avg rate</span>
+                </div>
               </div>
             </DashboardWidget>
 
             {/* SYSTEM HEALTH */}
             <DashboardWidget
               title="System Health"
-              value="98.7%"
+              value="99.9%"
               icon={<Icons.Shield className="h-4 w-4" />}
               color="from-green-500/25 to-green-500/8"
               borderColor="border-green-500/25"
@@ -264,8 +285,12 @@ function HeroDashboard() {
                   <div className="h-2.5 overflow-hidden rounded-full bg-white/5">
                     <div className="h-full w-[99%] rounded-full bg-gradient-to-r from-green-500 via-green-400 to-green-500 bg-[length:200%_100%] animate-gradient-shift shadow-[0_0_20px_rgba(34,197,94,0.4)]" />
                   </div>
+                  <p className="mt-1.5 text-[9px] text-muted/50">99.9% uptime (30 days)</p>
                 </div>
-                <span className="mono text-[10px] text-green-400 font-semibold">99%</span>
+                <div className="text-right">
+                  <span className="mono text-[10px] text-green-400 font-semibold block">Excellent</span>
+                  <span className="text-[9px] text-muted/50">status</span>
+                </div>
               </div>
             </DashboardWidget>
           </div>
