@@ -26,12 +26,16 @@ export default function Hero() {
             src="/fx/soon.gif"
             alt="Animated Orb"
             fill
-            className="object-contain opacity-50 md:opacity-70"
+            className="object-contain opacity-50 md:opacity-70 blur-[2px] md:blur-[1px]"
             priority
             sizes="(max-width: 768px) 80vw, 55vw"
+            style={{ filter: 'blur(2px) brightness(1.1)' }}
           />
         </div>
       </div>
+
+      {/* Soft gradient overlay to blend GIF edges */}
+      <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-radial from-transparent via-[#050816]/20 to-[#050816]/60" />
 
       {/* Dark overlay - Mobile: lighter | Desktop: darker for contrast */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/60 via-[#050816]/40 to-[#050816]/80 md:from-[#050816]/70 md:via-[#050816]/50 md:to-[#050816]/80 z-[1]" />
