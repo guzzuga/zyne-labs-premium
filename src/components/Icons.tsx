@@ -33,6 +33,9 @@ import {
   Code,
   Check,
   Plus,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export const Icons = {
@@ -70,4 +73,7 @@ export const Icons = {
   Code,
   Check,
   Plus,
+  X,
+  ChevronLeft,
+  ChevronRight,
 };

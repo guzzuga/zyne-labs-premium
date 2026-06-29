@@ -8,6 +8,8 @@ import TrustMarquee from "@/components/TrustMarquee";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import Stats from "@/components/Stats";
 import AIShowcase from "@/components/AIShowcase";
+import TechStack from "@/components/TechStack";
+import ProductShowcase from "@/components/ProductShowcase";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
@@ -33,6 +35,8 @@ export default function Page() {
         <FeaturesGrid />
         <Stats />
         <AIShowcase />
+        <TechStack />
+        <ProductShowcase />
         <Testimonials />
         <Pricing />
         <FAQ />
