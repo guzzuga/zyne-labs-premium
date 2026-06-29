@@ -70,7 +70,7 @@ export default function About() {
                       <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-green-500 border-2 border-[#0B0F1F] shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-base sm:text-lg">Wahyudi</h3>
+                      <h3 className="text-white font-bold text-base sm:text-lg">Agus Efendi</h3>
                       <p className="text-primary text-xs sm:text-sm font-semibold">Founder & Lead Developer</p>
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export default function About() {
                 Hi, I'm
               </span>{" "}
               <span className="gradient-text bg-gradient-to-r from-primary via-purple-glow to-cyan bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-                Wahyudi
+                Agus Efendi
               </span>
             </h2>
 
