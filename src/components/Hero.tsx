@@ -152,7 +152,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT: Dashboard Preview - Enhanced */}
+          {/* RIGHT: ZyneCode Product Preview */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95, rotateY: -10 }}
             animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
@@ -163,7 +163,7 @@ export default function Hero() {
             }}
             className="relative perspective-1000"
           >
-            <HeroDashboard />
+            <ZyneCodePreview />
           </motion.div>
         </div>
       </div>
@@ -171,7 +171,7 @@ export default function Hero() {
   );
 }
 
-function HeroDashboard() {
+function ZyneCodePreview() {
   return (
     <div className="group relative">
       {/* Outer glow layers */}
@@ -182,7 +182,7 @@ function HeroDashboard() {
       <div className="glass-strong relative overflow-hidden rounded-3xl md:rounded-[32px] border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)]">
         {/* Animated gradient sheen */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_60%),radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.08),transparent_50%)] animate-shimmer-slow" />
-        
+
         {/* Scanning line effect */}
         <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-scan-down" />
@@ -197,7 +197,7 @@ function HeroDashboard() {
               <span className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_12px_rgba(34,197,94,0.5)]" />
             </div>
             <span className="ml-3 text-[11px] text-muted/60 font-mono">
-              premium.zyne.dev
+              zyne.code
             </span>
           </div>
           <span className="mono flex items-center gap-2 text-[10px] text-green-400">
@@ -209,169 +209,34 @@ function HeroDashboard() {
           </span>
         </div>
 
-        {/* Dashboard Content */}
-        <div className="relative p-5 md:p-6">
-          <div className="grid gap-4 md:grid-cols-2">
-            {/* AI CHAT - Real Data */}
-            <DashboardWidget
-              title="AI Chat"
-              value="Active"
-              icon={<Icons.MessageSquare className="h-4 w-4" />}
-              color="from-primary/25 to-primary/8"
-              borderColor="border-primary/25"
-              glow="rgba(99,102,241,0.2)"
-            >
-              <div className="mt-3 space-y-2">
-                <div className="flex items-start gap-2.5">
-                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20 flex items-center justify-center">
-                    <Icons.Bot className="h-3 w-3 text-primary" />
-                  </div>
-                  <div className="flex-1 rounded-lg bg-white/5 px-2.5 py-1.5">
-                    <p className="text-[10px] text-muted/70">How can I help optimize your workflow?</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <div className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10" />
-                  <div className="flex-1 rounded-lg bg-primary/10 border border-primary/20 px-2.5 py-1.5">
-                    <p className="text-[10px] text-white/80">Automate my data processing pipeline</p>
-                  </div>
-                </div>
-              </div>
-            </DashboardWidget>
-
-            {/* ANALYTICS - Real Data */}
-            <DashboardWidget
-              title="Analytics"
-              value="+127%"
-              icon={<Icons.BarChart3 className="h-4 w-4" />}
-              color="from-purple-glow/25 to-purple-glow/8"
-              borderColor="border-purple-glow/25"
-              glow="rgba(139,92,246,0.2)"
-            >
-              <div className="mt-3">
-                <div className="flex items-end gap-1.5 h-10">
-                  {[25, 45, 35, 60, 50, 75, 65].map((h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 rounded-t-sm bg-gradient-to-t from-purple-glow/50 to-purple-glow/20 shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 hover:scale-y-110"
-                      style={{ height: `${h}%` }}
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 flex justify-between text-[9px] text-muted/50">
-                  <span>Mon</span>
-                  <span>Tue</span>
-                  <span>Wed</span>
-                  <span>Thu</span>
-                  <span>Fri</span>
-                  <span>Sat</span>
-                  <span>Sun</span>
-                </div>
-              </div>
-            </DashboardWidget>
-
-            {/* API Requests */}
-            <DashboardWidget
-              title="API Requests"
-              value="12.4K"
-              icon={<Icons.Zap className="h-4 w-4" />}
-              color="from-cyan/25 to-cyan/8"
-              borderColor="border-cyan/25"
-              glow="rgba(6,182,212,0.2)"
-            >
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex-1">
-                  <div className="h-2.5 overflow-hidden rounded-full bg-white/5">
-                    <div className="h-full w-[72%] rounded-full bg-gradient-to-r from-cyan via-primary to-cyan bg-[length:200%_100%] animate-gradient-shift shadow-[0_0_20px_rgba(6,182,212,0.4)]" />
-                  </div>
-                  <p className="mt-1.5 text-[9px] text-muted/50">72% of monthly limit</p>
-                </div>
-                <div className="text-right">
-                  <span className="mono text-[10px] text-cyan font-semibold block">2.4K/h</span>
-                  <span className="text-[9px] text-muted/50">avg rate</span>
-                </div>
-              </div>
-            </DashboardWidget>
-
-            {/* SYSTEM HEALTH */}
-            <DashboardWidget
-              title="System Health"
-              value="99.9%"
-              icon={<Icons.Shield className="h-4 w-4" />}
-              color="from-green-500/25 to-green-500/8"
-              borderColor="border-green-500/25"
-              glow="rgba(34,197,94,0.2)"
-            >
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex-1">
-                  <div className="h-2.5 overflow-hidden rounded-full bg-white/5">
-                    <div className="h-full w-[99%] rounded-full bg-gradient-to-r from-green-500 via-green-400 to-green-500 bg-[length:200%_100%] animate-gradient-shift shadow-[0_0_20px_rgba(34,197,94,0.4)]" />
-                  </div>
-                  <p className="mt-1.5 text-[9px] text-muted/50">99.9% uptime (30 days)</p>
-                </div>
-                <div className="text-right">
-                  <span className="mono text-[10px] text-green-400 font-semibold block">Excellent</span>
-                  <span className="text-[9px] text-muted/50">status</span>
-                </div>
-              </div>
-            </DashboardWidget>
-          </div>
-
-          {/* Bottom: workflow builder preview - Enhanced */}
-          <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/[0.08] bg-gradient-to-r from-white/[0.04] to-transparent px-4 py-3">
-            <div className="relative">
-              <Icons.Workflow className="h-4 w-4 text-primary" />
-              <div className="absolute inset-0 bg-primary/20 blur-md" />
-            </div>
-            <span className="text-[11px] text-muted/80 font-medium">
-              Workflow Builder — 3 active automations
-            </span>
-            <span className="ml-auto text-[10px] text-primary font-semibold flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              Running
-            </span>
-          </div>
+        {/* ZyneCode Screenshot */}
+        <div className="relative aspect-square">
+          <Image
+            src="/works/zynecode-1.png"
+            alt="ZyneCode - AI-Powered Code Platform"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 40vw"
+            priority
+          />
+          {/* Gradient overlay for seamless blend */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/60 via-transparent to-transparent" />
         </div>
-      </div>
-    </div>
-  );
-}
 
-function DashboardWidget({
-  title,
-  value,
-  icon,
-  children,
-  color,
-  borderColor,
-  glow,
-}: {
-  title: string;
-  value: string;
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  color: string;
-  borderColor: string;
-  glow: string;
-}) {
-  return (
-    <div
-      className={`group/widget relative rounded-xl border bg-gradient-to-b ${color} ${borderColor} p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_32px_${glow}]`}
-    >
-      {/* Inner glow on hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-transparent to-white/[0.02] opacity-0 group-hover/widget:opacity-100 transition-opacity" />
-      
-      <div className="relative z-10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="text-muted/70 group-hover/widget:text-white/90 transition-colors">{icon}</span>
-            <span className="text-[11px] text-muted/80 font-medium">{title}</span>
+        {/* Bottom: product label */}
+        <div className="relative flex items-center gap-3 rounded-b-[24px] md:rounded-b-[32px] border-t border-white/[0.08] bg-gradient-to-r from-white/[0.04] to-transparent px-5 py-4">
+          <div className="relative">
+            <Icons.Code className="h-4 w-4 text-primary" />
+            <div className="absolute inset-0 bg-primary/20 blur-md" />
           </div>
-          <span className="mono text-[11px] font-semibold text-white/90">
-            {value}
+          <span className="text-[11px] text-muted/80 font-medium">
+            ZyneCode — AI-Powered Development Platform
+          </span>
+          <span className="ml-auto text-[10px] text-primary font-semibold flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            Featured
           </span>
         </div>
-        {children}
       </div>
     </div>
   );

@@ -7,6 +7,18 @@ import { Icons } from "./Icons";
 
 const PRODUCTS = [
   {
+    id: 0,
+    title: "ZyneCode",
+    category: "AI & Machine Learning",
+    description: "AI-powered development platform — intelligent code generation, refactoring, and deployment automation for modern teams.",
+    image: "/works/zynecode-1.png",
+    images: ["/works/zynecode-1.png"],
+    tags: ["AI/ML", "Next.js", "Python", "OpenAI"],
+    color: "from-primary/20 to-primary/5",
+    border: "border-primary/20",
+    featured: true,
+  },
+  {
     id: 1,
     title: "AI Dashboard Platform",
     category: "AI & Machine Learning",
@@ -180,10 +192,15 @@ export default function ProductShowcase() {
                     </div>
 
                     {/* Category badge */}
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute top-4 left-4 flex gap-2">
                       <span className="rounded-lg bg-black/60 backdrop-blur-xl px-3 py-1.5 text-xs font-semibold text-white border border-white/10">
                         {product.category}
                       </span>
+                      {product.featured && (
+                        <span className="rounded-lg bg-gradient-to-r from-primary/80 to-purple-glow/80 backdrop-blur-xl px-3 py-1.5 text-xs font-semibold text-white border border-primary/30 shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+                          ⚡ FEATURED
+                        </span>
+                      )}
                     </div>
                   </div>
 
