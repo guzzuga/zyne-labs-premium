@@ -23,14 +23,14 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
-            {/* Animated Orb Background */}
-            <div className="absolute -inset-4 rounded-[32px] opacity-50 blur-2xl overflow-hidden">
-              <div className="absolute inset-0 rounded-[32px] animate-orb-rotate">
+            {/* Logo Glow Background */}
+            <div className="absolute -inset-4 rounded-[32px] opacity-30 blur-2xl overflow-hidden">
+              <div className="absolute inset-0 rounded-[32px]">
                 <Image
-                  src="/fx/orb.gif"
-                  alt="Animated Orb"
+                  src="/zyne-logo.png"
+                  alt="Zyne Labs Logo"
                   fill
-                  className="object-cover rounded-[32px] opacity-60"
+                  className="object-cover rounded-[32px] opacity-40"
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

@@ -18,23 +18,22 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
-      {/* Animated GIF Background - Behind heading text */}
+      {/* Logo Background - Behind heading text */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-        {/* Mobile: larger, centered | Desktop: smaller, higher position */}
-        <div className="absolute top-[15%] md:top-[10%] left-1/2 -translate-x-1/2 -translate-y-[20%] md:-translate-y-[10%] w-[80%] md:w-[55%] h-[80%] md:h-[55%] rounded-full">
+        <div className="absolute top-[15%] md:top-[10%] left-1/2 -translate-x-1/2 -translate-y-[20%] md:-translate-y-[10%] w-[60%] md:w-[40%] h-[60%] md:h-[40%]">
           <Image
-            src="/fx/soon.gif"
-            alt="Animated Orb"
+            src="/zyne-logo.png"
+            alt="Zyne Labs Logo"
             fill
-            className="object-contain opacity-50 md:opacity-70 blur-[2px] md:blur-[1px]"
+            className="object-contain opacity-20 md:opacity-25"
             priority
-            sizes="(max-width: 768px) 80vw, 55vw"
-            style={{ filter: 'blur(2px) brightness(1.1)' }}
+            sizes="(max-width: 768px) 60vw, 40vw"
+            style={{ filter: 'blur(1px) brightness(1.1)' }}
           />
         </div>
       </div>
 
-      {/* Soft gradient overlay to blend GIF edges */}
+      {/* Soft gradient overlay to blend logo edges */}
       <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-radial from-transparent via-[#050816]/20 to-[#050816]/60" />
 
       {/* Dark overlay - Mobile: lighter | Desktop: darker for contrast */}

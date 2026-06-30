@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { Icons } from "./Icons";
 
 const NAV_LINKS = [
@@ -55,8 +56,14 @@ export default function Nav() {
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-purple-glow shadow-lg shadow-primary/20">
-            <Icons.Sparkles className="h-4 w-4 text-white" />
+          <div className="h-9 w-9 overflow-hidden rounded-xl shadow-lg shadow-primary/20">
+            <Image
+              src="/zyne-logo.png"
+              alt="Zyne Labs Logo"
+              width={36}
+              height={36}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
           </div>
           <div className="leading-tight">
             <div className="text-sm font-semibold tracking-tight">
