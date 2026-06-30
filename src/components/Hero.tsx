@@ -209,10 +209,10 @@ function ZyneCodePreview() {
           </span>
         </div>
 
-        {/* ZyneCode Screenshot - Clean, clear image */}
+        {/* ZyneCode Screenshot - Clean, bright image */}
         <div className="relative aspect-square overflow-hidden">
-          {/* Ambient blue glow behind image */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(59,130,246,0.12),rgba(99,102,241,0.08),transparent_70%)]" />
+          {/* Subtle glow behind image */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(59,130,246,0.1),rgba(99,102,241,0.05),transparent_70%)]" />
 
           <Image
             src="/works/zynecode-1.png"
@@ -221,11 +221,11 @@ function ZyneCodePreview() {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 40vw"
             priority
-            style={{ filter: 'brightness(1.25) contrast(1.15)' }}
+            style={{ filter: 'brightness(1.5) contrast(1.1)' }}
           />
 
-          {/* Subtle gradient edges for blend */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/50 via-transparent to-[#050816]/30" />
+          {/* Faint gradient edges only */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/20 via-transparent to-[#050816]/10" />
         </div>
 
         {/* Bottom: product label */}
