@@ -150,7 +150,7 @@ export default function About() {
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl text-muted/90 font-light mb-6 sm:mb-8 leading-relaxed">
               Founder of{" "}
-              <span className="text-white font-semibold">Zyne Labs Studio</span> — 
+              <span className="text-white font-semibold">Zynecode Studio</span> 
               a premium AI engineering studio based in Mojokerto, Indonesia.
             </p>
 
@@ -161,16 +161,16 @@ export default function About() {
                 <span className="text-white font-medium">AI-powered applications</span>,{" "}
                 <span className="text-white font-medium">intelligent systems</span>, and{" "}
                 <span className="text-white font-medium">automation solutions</span>{" "}
-                for forward-thinking businesses worldwide.
+                for forward thinking businesses worldwide.
               </p>
               <p>
                 With over 5 years of experience in software development, I've helped 25+ clients 
-                transform their ideas into scalable, production-ready solutions using cutting-edge 
+                transform their ideas into scalable, production ready solutions using cutting edge 
                 technologies like React, Python, TensorFlow, and cloud infrastructure.
               </p>
               <p>
-                My passion lies in bridging the gap between complex AI technology and real-world 
-                business applications — making advanced technology accessible and practical for 
+                My passion lies in bridging the gap between complex AI technology and real world 
+                business applications, making advanced technology accessible and practical for 
                 businesses of all sizes.
               </p>
             </div>
