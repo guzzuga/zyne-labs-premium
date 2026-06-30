@@ -18,24 +18,6 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
-      {/* Logo Background - Behind heading text */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-        <div className="absolute top-[10%] md:top-[5%] left-1/2 -translate-x-1/2 -translate-y-[15%] md:-translate-y-[8%] w-[90%] md:w-[65%] h-[90%] md:h-[65%]">
-          <Image
-            src="/zyne-logo.png"
-            alt="Zyne Labs Logo"
-            fill
-            className="object-contain opacity-30 md:opacity-35"
-            priority
-            sizes="(max-width: 768px) 90vw, 65vw"
-            style={{ filter: 'brightness(1.2)' }}
-          />
-        </div>
-      </div>
-
-      {/* Soft gradient overlay to blend logo edges */}
-      <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-radial from-transparent via-[#050816]/20 to-[#050816]/60" />
-
       {/* Dark overlay - Mobile: lighter | Desktop: darker for contrast */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/60 via-[#050816]/40 to-[#050816]/80 md:from-[#050816]/70 md:via-[#050816]/50 md:to-[#050816]/80 z-[1]" />
 
