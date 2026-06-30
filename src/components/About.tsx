@@ -150,8 +150,8 @@ export default function About() {
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl text-muted/90 font-light mb-6 sm:mb-8 leading-relaxed">
               Founder of{" "}
-              <span className="text-white font-semibold">Zynecode Studio</span>  
-              a premium AI engineering studio based in Mojokerto, Indonesia.
+              <span className="text-white font-semibold">Zynecode Studio</span> a premium AI engineering
+              studio based in Mojokerto, Indonesia.
             </p>
 
             {/* Description */}
