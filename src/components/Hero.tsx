@@ -209,14 +209,11 @@ function ZyneCodePreview() {
           </span>
         </div>
 
-        {/* ZyneCode Screenshot - Enhanced for mobile readability */}
+        {/* ZyneCode Screenshot - Clean, clear image */}
         <div className="relative aspect-square overflow-hidden">
-          {/* Ambient blue glow behind logo */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(59,130,246,0.15),rgba(99,102,241,0.1),transparent_70%)]" />
-          
-          {/* Glassmorphism layer behind logo */}
-          <div className="absolute inset-[10%] rounded-full bg-white/[0.03] backdrop-blur-sm border border-white/[0.05]" />
-          
+          {/* Ambient blue glow behind image */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(59,130,246,0.12),rgba(99,102,241,0.08),transparent_70%)]" />
+
           <Image
             src="/works/zynecode-1.png"
             alt="ZyneCode - AI-Powered Code Platform"
@@ -224,59 +221,20 @@ function ZyneCodePreview() {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 40vw"
             priority
-            style={{ filter: 'brightness(1.2) contrast(1.15)' }}
+            style={{ filter: 'brightness(1.25) contrast(1.15)' }}
           />
-          
-          {/* Dark gradient overlays for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/80 via-[#050816]/30 to-[#050816]/20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050816]/40 via-transparent to-transparent" />
-          
-          {/* Center text overlay - ZYNECODE brand */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-10">
-            {/* ZYNECODE main text - larger, white with glow */}
-            <h2 
-              className="text-[clamp(1.8rem,7vw,3.2rem)] font-extrabold tracking-wider text-center"
-              style={{ 
-                fontFamily: "var(--font-display), sans-serif",
-                color: '#FFFFFF',
-                textShadow: '0 0 30px rgba(59,130,246,0.6), 0 0 60px rgba(99,102,241,0.3), 0 2px 4px rgba(0,0,0,0.5)',
-                WebkitTextStroke: '0.5px rgba(255,255,255,0.2)'
-              }}
-            >
-              ZYNECODE
-            </h2>
-            
-            {/* Tagline - lighter, readable */}
-            <p 
-              className="mt-2 md:mt-3 text-[clamp(0.55rem,2.2vw,0.85rem)] font-medium tracking-[0.25em] text-center uppercase"
-              style={{ 
-                color: 'rgba(255,255,255,0.7)',
-                textShadow: '0 0 15px rgba(59,130,246,0.3), 0 1px 3px rgba(0,0,0,0.5)'
-              }}
-            >
-              BUILD • AUTOMATE • INNOVATE
-            </p>
-            
-            {/* Subtitle */}
-            <p 
-              className="mt-3 md:mt-4 text-[clamp(0.6rem,2vw,0.75rem)] font-medium tracking-[0.15em] text-center"
-              style={{ 
-                color: 'rgba(255,255,255,0.5)',
-                textShadow: '0 1px 2px rgba(0,0,0,0.5)'
-              }}
-            >
-              AI-Powered Development Platform
-            </p>
-          </div>
+
+          {/* Subtle gradient edges for blend */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/50 via-transparent to-[#050816]/30" />
         </div>
 
-        {/* Bottom: product label - Enhanced */}
+        {/* Bottom: product label */}
         <div className="relative flex items-center gap-3 rounded-b-[24px] md:rounded-b-[32px] border-t border-white/[0.08] bg-gradient-to-r from-white/[0.04] to-transparent px-4 py-3 md:px-5 md:py-4">
           <div className="relative">
             <Icons.Code className="h-4 w-4 text-primary" />
             <div className="absolute inset-0 bg-primary/20 blur-md" />
           </div>
-          <span className="text-[11px] text-white/80 font-medium">
+          <span className="text-[12px] text-white/90 font-semibold">
             ZyneCode — AI-Powered Development Platform
           </span>
           <span className="ml-auto text-[10px] text-primary font-semibold flex items-center gap-1.5">
