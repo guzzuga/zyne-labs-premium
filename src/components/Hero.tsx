@@ -165,15 +165,15 @@ function LiveTerminalShell() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.12),transparent_60%)]" />
 
         {/* Top bar */}
-        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-3 bg-gradient-to-r from-white/[0.02] to-transparent">
+        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-2.5 bg-gradient-to-r from-white/[0.02] to-transparent">
           <div className="flex items-center gap-2.5">
             <div className="flex gap-2">
               <span className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_12px_rgba(239,68,68,0.5)]" />
               <span className="h-3 w-3 rounded-full bg-yellow-500/80 shadow-[0_0_12px_rgba(234,179,8,0.5)]" />
               <span className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_12px_rgba(34,197,94,0.5)]" />
             </div>
-            <span className="ml-3 text-[11px] text-muted/60 font-mono">
-              zyne.code — live
+            <span className="ml-3 text-[10px] text-muted/50 font-mono tracking-wide">
+              zyne.code — live terminal
             </span>
           </div>
         </div>
@@ -184,9 +184,12 @@ function LiveTerminalShell() {
         </div>
 
         {/* Bottom bar */}
-        <div className="relative flex items-center gap-3 border-t border-white/[0.08] bg-gradient-to-r from-white/[0.03] to-transparent px-4 py-3 md:px-5">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_12px_rgba(34,197,94,0.6)]" />
-          <span className="text-[11px] text-muted/70 font-mono">typing...</span>
+        <div className="relative flex items-center justify-between border-t border-white/[0.08] bg-gradient-to-r from-white/[0.03] to-transparent px-4 py-2.5 md:px-5">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_12px_rgba(34,197,94,0.6)]" />
+            <span className="text-[10px] text-muted/60 font-mono">running</span>
+          </div>
+          <span className="text-[10px] text-muted/40 font-mono">utf-8</span>
         </div>
       </div>
     </div>
