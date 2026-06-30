@@ -20,15 +20,15 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
       {/* Logo Background - Behind heading text */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-        <div className="absolute top-[15%] md:top-[10%] left-1/2 -translate-x-1/2 -translate-y-[20%] md:-translate-y-[10%] w-[60%] md:w-[40%] h-[60%] md:h-[40%]">
+        <div className="absolute top-[10%] md:top-[5%] left-1/2 -translate-x-1/2 -translate-y-[15%] md:-translate-y-[8%] w-[90%] md:w-[65%] h-[90%] md:h-[65%]">
           <Image
             src="/zyne-logo.png"
             alt="Zyne Labs Logo"
             fill
-            className="object-contain opacity-20 md:opacity-25"
+            className="object-contain opacity-30 md:opacity-35"
             priority
-            sizes="(max-width: 768px) 60vw, 40vw"
-            style={{ filter: 'blur(1px) brightness(1.1)' }}
+            sizes="(max-width: 768px) 90vw, 65vw"
+            style={{ filter: 'brightness(1.2)' }}
           />
         </div>
       </div>
