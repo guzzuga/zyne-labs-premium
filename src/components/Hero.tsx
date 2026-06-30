@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import LiveTerminal from "./LiveTerminal";
 import { Icons } from "./Icons";
 
 const WA = "https://wa.me/6285729753619";
@@ -145,7 +145,7 @@ export default function Hero() {
             }}
             className="relative perspective-1000"
           >
-            <ZyneCodePreview />
+            <LiveTerminalShell />
           </motion.div>
         </div>
       </div>
@@ -153,25 +153,19 @@ export default function Hero() {
   );
 }
 
-function ZyneCodePreview() {
+function LiveTerminalShell() {
   return (
     <div className="group relative">
-      {/* Outer glow layers */}
-      <div className="pointer-events-none absolute -inset-8 rounded-[32px] bg-gradient-to-br from-primary/15 via-purple-glow/10 to-cyan/10 opacity-30 blur-3xl transition duration-1000 group-hover:opacity-50 animate-pulse-slow" />
-      <div className="pointer-events-none absolute -inset-6 rounded-[28px] bg-gradient-to-tr from-primary/10 via-transparent to-cyan/10 opacity-20 blur-2xl group-hover:opacity-40 transition duration-700" />
+      {/* Outer glow */}
+      <div className="pointer-events-none absolute -inset-6 rounded-[32px] bg-gradient-to-br from-primary/12 via-purple-glow/8 to-cyan/8 opacity-40 blur-3xl animate-pulse-slow" />
+      <div className="pointer-events-none absolute -inset-4 rounded-[28px] bg-gradient-to-tr from-primary/8 via-transparent to-cyan/8 opacity-20 blur-2xl" />
 
-      {/* Glass shell - Enhanced */}
-      <div className="glass-strong relative overflow-hidden rounded-3xl md:rounded-[32px] border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)]">
-        {/* Animated gradient sheen */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_60%),radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.08),transparent_50%)] animate-shimmer-slow" />
+      {/* Terminal shell */}
+      <div className="glass-strong relative overflow-hidden rounded-3xl md:rounded-[32px] border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.12),transparent_60%)]" />
 
-        {/* Scanning line effect */}
-        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-scan-down" />
-        </div>
-
-        {/* Top bar - Enhanced */}
-        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5 bg-gradient-to-r from-white/[0.02] to-transparent">
+        {/* Top bar */}
+        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-3 bg-gradient-to-r from-white/[0.02] to-transparent">
           <div className="flex items-center gap-2.5">
             <div className="flex gap-2">
               <span className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_12px_rgba(239,68,68,0.5)]" />
@@ -179,50 +173,20 @@ function ZyneCodePreview() {
               <span className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_12px_rgba(34,197,94,0.5)]" />
             </div>
             <span className="ml-3 text-[11px] text-muted/60 font-mono">
-              zyne.code
+              zyne.code — live
             </span>
           </div>
-          <span className="mono flex items-center gap-2 text-[10px] text-green-400">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400 shadow-[0_0_12px_rgba(34,197,94,0.6)]" />
-            </span>
-            LIVE
-          </span>
         </div>
 
-        {/* ZyneCode Screenshot - Clean, bright image */}
+        {/* Live terminal area */}
         <div className="relative aspect-square overflow-hidden">
-          {/* Subtle glow behind image */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(59,130,246,0.1),rgba(99,102,241,0.05),transparent_70%)]" />
-
-          <Image
-            src="/works/zynecode-1.png"
-            alt="ZyneCode - AI-Powered Code Platform"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 40vw"
-            priority
-            style={{ filter: 'brightness(1.5) contrast(1.1)' }}
-          />
-
-          {/* Faint gradient edges only */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/20 via-transparent to-[#050816]/10" />
+          <LiveTerminal />
         </div>
 
-        {/* Bottom: product label */}
-        <div className="relative flex items-center gap-3 rounded-b-[24px] md:rounded-b-[32px] border-t border-white/[0.08] bg-gradient-to-r from-white/[0.04] to-transparent px-4 py-3 md:px-5 md:py-4">
-          <div className="relative">
-            <Icons.Code className="h-4 w-4 text-primary" />
-            <div className="absolute inset-0 bg-primary/20 blur-md" />
-          </div>
-          <span className="text-[12px] text-white/90 font-semibold">
-            ZyneCode — AI-Powered Development Platform
-          </span>
-          <span className="ml-auto text-[10px] text-primary font-semibold flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            Featured
-          </span>
+        {/* Bottom bar */}
+        <div className="relative flex items-center gap-3 border-t border-white/[0.08] bg-gradient-to-r from-white/[0.03] to-transparent px-4 py-3 md:px-5">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shadow-[0_0_12px_rgba(34,197,94,0.6)]" />
+          <span className="text-[11px] text-muted/70 font-mono">typing...</span>
         </div>
       </div>
     </div>
