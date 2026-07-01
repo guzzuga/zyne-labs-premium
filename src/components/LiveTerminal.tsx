@@ -10,7 +10,7 @@ interface RenderedLine {
 
 export default function LiveTerminal() {
   const [lines, setLines] = useState<RenderedLine[]>([]);
-    const [currentText, setCurrentText] = useState("");
+  const [currentText, setCurrentText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [lang, setLang] = useState("python");
   const [phase, setPhase] = useState<"typing" | "holding" | "fading" | "pausing">("typing");
