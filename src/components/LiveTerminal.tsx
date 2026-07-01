@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { snippets, colorMap, type SnippetLine } from "./LiveTerminalData";
+import { snippets, colorMap, type SnippetLine, type Token } from "./LiveTerminalData";
 
 interface RenderedLine {
   tokens: SnippetLine["tokens"];
@@ -11,6 +11,7 @@ interface RenderedLine {
 export default function LiveTerminal() {
   const [lines, setLines] = useState<RenderedLine[]>([]);
   const [currentText, setCurrentText] = useState("");
+  const [currentTokens, setCurrentTokens] = useState<Token[]>([]);
   const [showCursor, setShowCursor] = useState(true);
   const [lang, setLang] = useState("python");
   const [phase, setPhase] = useState<"typing" | "holding" | "fading" | "pausing">("typing");
@@ -20,6 +21,7 @@ export default function LiveTerminal() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setLines([]);
     setCurrentText("");
+    setCurrentTokens([]);
   }, []);
 
   // Blink cursor
@@ -47,30 +49,29 @@ export default function LiveTerminal() {
         charIdx++;
         schedule(typeChar, 35 + Math.random() * 30);
       } else {
-        // Line complete - save it
         setLines((prev) => [...prev, { tokens: currentLine!.tokens }]);
         setCurrentText("");
+        setCurrentTokens([]);
         charIdx = 0;
         lineIdx++;
         if (lineIdx < snippets[sceneIdx].lines.length) {
           currentLine = snippets[sceneIdx].lines[lineIdx];
+          setCurrentTokens(currentLine!.tokens);
           schedule(typeChar, currentLine!.fullText === "" ? 120 : 500 + Math.random() * 700);
         } else {
-          // All lines typed - hold for 10 seconds
           setPhase("holding");
+          setCurrentTokens([]);
           schedule(hold, 10000);
         }
       }
     };
 
     const hold = () => {
-      // After holding, fade out character by character
       setPhase("fading");
       fadeOut();
     };
 
     const fadeOut = () => {
-      // Remove lines from top one by one
       setLines((prev) => {
         if (prev.length === 0) {
           setPhase("pausing");
@@ -90,16 +91,17 @@ export default function LiveTerminal() {
       setLang(scene.lang);
       setPhase("typing");
       currentLine = scene.lines[0];
+      setCurrentTokens(currentLine.tokens);
       lineIdx = 1;
       charIdx = 0;
       clear();
       schedule(typeChar, 600);
     };
 
-    // Start first scene
     const first = snippets[0];
     setLang(first.lang);
     currentLine = first.lines[0];
+    setCurrentTokens(currentLine.tokens);
     lineIdx = 1;
     charIdx = 0;
     schedule(typeChar, 1000);
@@ -174,14 +176,38 @@ export default function LiveTerminal() {
             </div>
           ))}
 
-          {/* Current typing line */}
+          {/* Current typing line with live syntax highlighting */}
           {currentText && (
             <div className="flex">
               <span className="select-none text-[10px] text-[#858585] mr-3 inline-block w-5 text-right shrink-0">
                 {lines.length + 1}
               </span>
-              <span className="text-[#D4D4D4]">
-                {currentText}
+              <span>
+                {(() => {
+                  // Build character→color map from currentTokens
+                  const charColors: string[] = [];
+                  const charStyles: string[] = [];
+                  let pos = 0;
+                  for (const token of currentTokens) {
+                    const tokenLen = token.text.length;
+                    for (let c = 0; c < tokenLen && pos + c < currentText.length; c++) {
+                      charColors.push(colorMap[token.cls] || "#D4D4D4");
+                      charStyles.push(token.cls === "cm" ? "italic" : "normal");
+                    }
+                    pos += tokenLen;
+                  }
+                  return currentText.split("").map((ch, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        color: charColors[i] || "#D4D4D4",
+                        fontStyle: charStyles[i] || "normal",
+                      }}
+                    >
+                      {ch}
+                    </span>
+                  ));
+                })()}
                 <span
                   className="inline-block h-3.5 w-[2px] ml-px align-middle"
                   style={{
