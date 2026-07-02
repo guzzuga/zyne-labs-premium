@@ -87,12 +87,6 @@ export default function ProductShowcase() {
 
   return (
     <section id="works" className="relative px-4 py-24 sm:px-6 md:py-32 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[10%] left-[30%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[120px]" />
-        <div className="absolute bottom-[10%] right-[30%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-purple-glow/5 to-transparent blur-[120px]" />
-      </div>
-
       <div className="mx-auto max-w-7xl relative z-10">
         {/* Header */}
         <motion.div

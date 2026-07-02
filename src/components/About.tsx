@@ -7,12 +7,6 @@ import { Icons } from "./Icons";
 export default function About() {
   return (
     <section id="about" className="relative px-4 py-20 sm:px-6 md:py-28 lg:py-32 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-[20%] right-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[100px]" />
-        <div className="absolute bottom-[20%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-tl from-cyan/5 to-transparent blur-[100px]" />
-      </div>
-
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* LEFT: Image with Premium Frame */}

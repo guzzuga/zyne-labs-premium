@@ -76,12 +76,6 @@ export default function Pricing() {
 
   return (
     <section id="pricing" className="relative px-4 py-20 sm:px-6 md:py-28 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-[30%] left-[20%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[120px]" />
-        <div className="absolute bottom-[30%] right-[20%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-purple-glow/5 to-transparent blur-[120px]" />
-      </div>
-
       <div className="mx-auto max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

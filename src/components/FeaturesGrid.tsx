@@ -98,12 +98,6 @@ const cardVariants = {
 export default function FeaturesGrid() {
   return (
     <section id="features" className="relative px-4 py-24 sm:px-6 md:py-32">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-tl from-cyan/5 to-transparent blur-[100px]" />
-      </div>
-
       <div className="mx-auto max-w-7xl relative z-10">
         {/* Header */}
         <motion.div
@@ -141,42 +135,15 @@ export default function FeaturesGrid() {
               key={feature.title}
               variants={cardVariants}
               className="group relative"
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Outer glow */}
-              <div
-                className="pointer-events-none absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
-                style={{ background: `radial-gradient(200px at 50% 50%, ${feature.glow}, transparent 70%)` }}
-              />
-
-              {/* Card with gradient border */}
-              <div className="gradient-border-animated relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
-                style={{
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                }}
-              >
-                {/* Animated gradient sheen */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                {/* Hover glow effect */}
-                <div
-                  className="pointer-events-none absolute -inset-20 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                  style={{
-                    background: `radial-gradient(300px at 50% 50%, ${feature.glow}, transparent 70%)`,
-                  }}
-                />
-
-                {/* Shimmer border */}
-                <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute inset-0 rounded-xl shimmer-line" />
-                </div>
-
+              {/* Card */}
+              <div className="gradient-border-animated relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all duration-300 hover:border-white/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
                 {/* Content */}
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className={`mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 ${feature.iconGlow} transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                  <div className="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 transition-transform duration-300 group-hover:scale-110">
                     <feature.icon className="h-5.5 w-5.5 text-white/90" />
                   </div>
 

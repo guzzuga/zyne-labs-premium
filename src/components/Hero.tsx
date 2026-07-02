@@ -18,15 +18,6 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
-      {/* Dark overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/60 via-[#050816]/40 to-[#050816]/80 md:from-[#050816]/70 md:via-[#050816]/50 md:to-[#050816]/80 z-[1]" />
-
-      {/* Premium ambient glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-primary/8 via-purple-glow/6 to-transparent blur-[120px] animate-pulse-slow" />
-        <div className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-bl from-cyan/6 via-primary/4 to-transparent blur-[100px] animate-pulse-slow delay-1000" />
-      </div>
-
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           {/* LEFT */}
