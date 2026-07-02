@@ -77,11 +77,48 @@ const categoryVariants = {
   },
 };
 
+/* ── Extracted so useTilt is at the top level ── */
+function TechStackCard({ stack }: { stack: typeof TECH_STACKS[0] }) {
+  const tiltRef = useTilt(4);
+
+  return (
+    <div
+      ref={tiltRef}
+      className="tilt-card relative h-full rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_20px_60px_rgba(99,102,241,0.15)]"
+    >
+      <div className="tilt-card-inner">
+        <div className="mb-6 inline-block rounded-lg bg-gradient-to-r from-primary/20 to-purple-glow/20 px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
+          {stack.category}
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          {stack.items.map((tech) => {
+            const IconComponent = TECH_ICONS[tech] || Icons.Code2;
+            return (
+              <div
+                key={tech}
+                className={`group/tech relative flex flex-col items-center gap-3 rounded-xl border border-white/5 bg-gradient-to-b p-4 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-lg ${TECH_COLORS[tech] || "from-white/5 to-transparent"}`}
+              >
+                <div className="relative h-12 w-12 rounded-lg bg-white/5 p-2 flex items-center justify-center overflow-hidden">
+                  <IconComponent className="h-5 w-5 text-white/60 relative z-10" />
+                </div>
+
+                <span className="text-xs font-medium text-white/80 text-center">
+                  {tech}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TechStack() {
   return (
     <section id="tech-stack" className="relative px-4 py-20 sm:px-6 md:py-28 overflow-hidden">
       <div className="mx-auto max-w-7xl relative z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +141,6 @@ export default function TechStack() {
           </p>
         </motion.div>
 
-        {/* Tech Stack Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -112,47 +148,17 @@ export default function TechStack() {
           viewport={{ once: true }}
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
         >
-          {TECH_STACKS.map((stack) => {
-            const tiltRef = useTilt(4);
-            return (
-              <motion.div
-                key={stack.category}
-                variants={categoryVariants}
-                className="group"
-              >
-                <div ref={tiltRef} className="tilt-card relative h-full rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_20px_60px_rgba(99,102,241,0.15)]">
-                  <div className="tilt-card-inner">
-                    <div className="mb-6 inline-block rounded-lg bg-gradient-to-r from-primary/20 to-purple-glow/20 px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
-                      {stack.category}
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      {stack.items.map((tech) => {
-                        const IconComponent = TECH_ICONS[tech] || Icons.Code2;
-                        return (
-                          <div
-                            key={tech}
-                            className={`group/tech relative flex flex-col items-center gap-3 rounded-xl border border-white/5 bg-gradient-to-b p-4 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-lg ${TECH_COLORS[tech] || "from-white/5 to-transparent"}`}
-                          >
-                            <div className="relative h-12 w-12 rounded-lg bg-white/5 p-2 flex items-center justify-center overflow-hidden">
-                              <IconComponent className="h-5 w-5 text-white/60 relative z-10" />
-                            </div>
-
-                            <span className="text-xs font-medium text-white/80 text-center">
-                              {tech}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {TECH_STACKS.map((stack) => (
+            <motion.div
+              key={stack.category}
+              variants={categoryVariants}
+              className="group"
+            >
+              <TechStackCard stack={stack} />
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* Additional tools badge cloud */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
