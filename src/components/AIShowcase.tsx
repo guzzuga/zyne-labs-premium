@@ -73,14 +73,13 @@ const cardVariants = {
   },
 };
 
-/* ── Extracted card so useTilt is called at the top level ── */
 function ShowcaseCard({ item }: { item: typeof SHOWCASE[0] }) {
   const tiltRef = useTilt(5);
 
   return (
     <div
       ref={tiltRef}
-      className={`tilt-card relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
+      className={`tilt-card relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5 cursor-pointer`}
     >
       <div className="tilt-card-inner relative z-10">
         <div className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-white/5 border border-white/10">
@@ -127,13 +126,14 @@ export default function AIShowcase() {
           className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         >
           {SHOWCASE.map((item, i) => (
-            <motion.div
+            <div
               key={item.title}
-              variants={cardVariants}
               className={`group relative ${i === SHOWCASE.length - 1 ? "md:col-span-1 lg:col-span-2 md:col-start-2 lg:col-start-auto" : ""}`}
             >
-              <ShowcaseCard item={item} />
-            </motion.div>
+              <motion.div variants={cardVariants} className="h-full">
+                <ShowcaseCard item={item} />
+              </motion.div>
+            </div>
           ))}
         </motion.div>
       </div>

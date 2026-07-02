@@ -5,9 +5,8 @@ import { useEffect, useRef } from "react";
 /* ─────────────────────────────────────────────────────────
    useTilt — Lightweight 3D tilt on mouse move
 
-   Tracks mouse position relative to element, applies
-   a subtle rotateX/Y transform (±8° max).
-   No framer-motion, no JS-heavy animations.
+   Guards element null state in cleanup (StrictMode fix).
+   No CSS transition conflict — pure RAF.
 ──────────────────────────────────────────────────────── */
 export function useTilt(maxRotation = 8) {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,10 +25,11 @@ export function useTilt(maxRotation = 8) {
       el.style.transform = "";
     };
     const onMove = (e: MouseEvent) => {
+      if (!isHovering) return;
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        if (!isHovering || !el) return;
         const rect = el.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
         el.style.transform = `perspective(800px) rotateY(${x * maxRotation}deg) rotateX(${-y * maxRotation}deg)`;
@@ -41,6 +41,8 @@ export function useTilt(maxRotation = 8) {
     el.addEventListener("mousemove", onMove);
 
     return () => {
+      // Guard: element may be null on unmount/StrictMode double-invocation
+      if (!el) return;
       el.removeEventListener("mouseenter", onEnter);
       el.removeEventListener("mouseleave", onLeave);
       el.removeEventListener("mousemove", onMove);

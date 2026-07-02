@@ -596,8 +596,12 @@ body {
    =========================== */
 .tilt-card {
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
   will-change: transform;
+  /* No CSS transition — RAF handles smoothness */
+}
+
+.tilt-card.is-resetting {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tilt-card-inner {
