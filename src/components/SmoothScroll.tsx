@@ -17,12 +17,7 @@ export default function SmoothScroll() {
 
     lenisRef.current = lenis;
 
-    function onFrame(time: number) {
-      lenis.raf(time);
-    }
-    requestAnimationFrame(onFrame);
-
-    // Connect Lenis to scroll listeners
+    // Single RAF loop
     const rafId = requestAnimationFrame(function tick(time: number) {
       lenis.raf(time);
       requestAnimationFrame(tick);

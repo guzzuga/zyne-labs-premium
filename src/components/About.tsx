@@ -6,7 +6,7 @@ import { Icons } from "./Icons";
 
 export default function About() {
   return (
-    <section id="about" className="relative px-4 py-16 sm:px-6 md:py-24 lg:py-28 overflow-hidden">
+    <section id="about" className="relative px-4 py-20 sm:px-6 md:py-28 lg:py-32 overflow-hidden">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-[20%] right-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[100px]" />
@@ -14,8 +14,8 @@ export default function About() {
       </div>
 
       <div className="mx-auto max-w-7xl relative z-10">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          {/* LEFT: Image with Orb Animation */}
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          {/* LEFT: Image with Premium Frame */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -40,15 +40,15 @@ export default function About() {
             {/* Outer glow ring */}
             <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-br from-primary/20 via-purple-glow/10 to-cyan/20 blur-3xl opacity-30 animate-pulse-slow" />
 
-            {/* Image Container */}
-            <div className="relative rounded-[28px] overflow-hidden border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_40px_120px_rgba(0,0,0,0.5)]">
+            {/* Premium image frame with gradient border */}
+            <div className="gradient-border-animated relative rounded-[28px] overflow-hidden border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_40px_120px_rgba(0,0,0,0.5)]">
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-40 z-10" />
-              
+
               {/* Photo */}
               <Image
                 src="/images/available.jpg"
-                alt="Profile"
+                alt="Agus Efendi - Founder & Lead Developer"
                 width={600}
                 height={700}
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
@@ -65,7 +65,7 @@ export default function About() {
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className="relative">
                       <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-to-br from-primary to-purple-glow flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-[0_0_20px_rgba(99,102,241,0.5)]">
-                        W
+                        A
                       </div>
                       <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-green-500 border-2 border-[#0B0F1F] shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
                     </div>
@@ -150,7 +150,7 @@ export default function About() {
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl text-muted/90 font-light mb-6 sm:mb-8 leading-relaxed">
               Founder of{" "}
-              <span className="text-white font-semibold">Zynecode Studio</span> a premium AI engineering
+              <span className="text-white font-semibold">Zynecode Studio</span> — a premium AI engineering
               studio based in Mojokerto, Indonesia.
             </p>
 
@@ -164,13 +164,13 @@ export default function About() {
                 for forward thinking businesses worldwide.
               </p>
               <p>
-                With over 5 years of experience in software development, I've helped 25+ clients 
-                transform their ideas into scalable, production ready solutions using cutting edge 
+                With over 5 years of experience in software development, I've helped 25+ clients{" "}
+                transform their ideas into scalable, production ready solutions using cutting edge{" "}
                 technologies like React, Python, TensorFlow, and cloud infrastructure.
               </p>
               <p>
-                My passion lies in bridging the gap between complex AI technology and real world 
-                business applications, making advanced technology accessible and practical for 
+                My passion lies in bridging the gap between complex AI technology and real world{" "}
+                business applications, making advanced technology accessible and practical for{" "}
                 businesses of all sizes.
               </p>
             </div>
@@ -234,14 +234,16 @@ export default function About() {
               <p className="text-[10px] sm:text-xs text-muted/60">Follow me:</p>
               <div className="flex gap-2 sm:gap-3">
                 {[
-                  { icon: Icons.Github, href: "#", label: "GitHub" },
-                  { icon: Icons.Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Icons.Instagram, href: "#", label: "Instagram" },
-                  { icon: Icons.Twitter, href: "#", label: "Twitter" },
+                  { icon: Icons.Github, href: "https://github.com/guzzuga", label: "GitHub" },
+                  { icon: Icons.Linkedin, href: "https://www.linkedin.com/in/agus-efendi-45645a18a", label: "LinkedIn" },
+                  { icon: Icons.Instagram, href: "https://instagram.com/efnd_ags", label: "Instagram" },
+                  { icon: Icons.Twitter, href: "https://x.com/efndags", label: "Twitter" },
                 ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="group relative h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
                     aria-label={social.label}
                   >

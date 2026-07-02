@@ -16,7 +16,6 @@ import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import MouseGlow from "@/components/MouseGlow";
 
 const SmoothScroll = dynamic(
   () => import("@/components/SmoothScroll"),
@@ -27,7 +26,6 @@ export default function Page() {
   return (
     <>
       <SmoothScroll />
-      <MouseGlow />
       <Background />
       <Nav />
       <main className="relative z-10">

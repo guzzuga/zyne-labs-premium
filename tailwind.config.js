@@ -38,6 +38,10 @@ module.exports = {
         "marquee-reverse": "marqueeReverse 40s linear infinite",
         "spin-slow": "spin 20s linear infinite",
         "gradient-move": "gradientMove 6s ease infinite",
+        "gradient-shift": "gradient-xy 4s ease infinite",
+        "gradient-xy": "gradient-xy 4s ease infinite",
+        "float-slow": "float-slow 6s ease-in-out infinite",
+        "float-delayed": "float-slow 7s ease-in-out 1s infinite",
       },
       keyframes: {
         aurora: {

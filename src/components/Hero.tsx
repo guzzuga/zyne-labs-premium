@@ -18,7 +18,7 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
-      {/* Dark overlay - Mobile: lighter | Desktop: darker for contrast */}
+      {/* Dark overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050816]/60 via-[#050816]/40 to-[#050816]/80 md:from-[#050816]/70 md:via-[#050816]/50 md:to-[#050816]/80 z-[1]" />
 
       {/* Premium ambient glow */}
@@ -51,13 +51,13 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Heading - Enhanced */}
+            {/* Heading */}
             <motion.h1
               custom={1}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="mt-8 text-[clamp(2.8rem,8vw,5rem)] font-bold leading-[0.9] tracking-tighter"
+              className="mt-10 text-[clamp(2.8rem,8vw,5rem)] font-bold leading-[0.9] tracking-tighter"
               style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               <span className="block bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,255,255,0.1)]">
@@ -82,7 +82,7 @@ export default function Hero() {
               to deployment.
             </motion.p>
 
-            {/* CTAs - Enhanced */}
+            {/* CTAs */}
             <motion.div
               custom={3}
               variants={fadeUp}
@@ -110,9 +110,42 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Stats - Enhanced */}
+            {/* Trust Signals */}
             <motion.div
               custom={4}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="mt-14 flex flex-wrap items-center gap-6"
+            >
+              <div className="flex -space-x-3">
+                {["#6366F1", "#8B5CF6", "#06B6D4", "#22C55E"].map((color, i) => (
+                  <div
+                    key={i}
+                    className="h-10 w-10 rounded-full border-2 border-[#050816] flex items-center justify-center text-xs font-bold text-white"
+                    style={{ backgroundColor: color }}
+                  >
+                    {["A", "S", "B", "D"][i]}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-xs text-muted/70 mt-1">
+                  <span className="text-white font-semibold">25+</span> clients trust us worldwide
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              custom={5}
               variants={fadeUp}
               initial="hidden"
               animate="visible"

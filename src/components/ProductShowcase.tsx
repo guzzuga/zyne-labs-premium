@@ -81,12 +81,12 @@ export default function ProductShowcase() {
   const [selectedProduct, setSelectedProduct] = useState<typeof PRODUCTS[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const filteredProducts = activeCategory === "All" 
-    ? PRODUCTS 
+  const filteredProducts = activeCategory === "All"
+    ? PRODUCTS
     : PRODUCTS.filter(p => p.category === activeCategory);
 
   return (
-    <section id="works" className="relative px-4 py-20 sm:px-6 md:py-28 overflow-hidden">
+    <section id="works" className="relative px-4 py-24 sm:px-6 md:py-32 overflow-hidden">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-[10%] left-[30%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[120px]" />
@@ -99,7 +99,7 @@ export default function ProductShowcase() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-2xl text-center mb-12"
+          className="mx-auto max-w-2xl text-center mb-16"
         >
           <p className="mono text-[11px] tracking-[0.3em] text-primary uppercase">
             Our Work
@@ -122,7 +122,7 @@ export default function ProductShowcase() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-3 mb-16"
         >
           {CATEGORIES.map((category) => (
             <button
@@ -159,7 +159,7 @@ export default function ProductShowcase() {
                   setCurrentImageIndex(0);
                 }}
               >
-                <div className={`relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${product.color} ${product.border} transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(99,102,241,0.2)]`}>
+                <div className={`gradient-border-animated relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${product.color} ${product.border} transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(99,102,241,0.2)]`}>
                   {/* Product Image */}
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -171,7 +171,7 @@ export default function ProductShowcase() {
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                    
+
                     {/* Hover play button */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="h-16 w-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
@@ -249,7 +249,7 @@ export default function ProductShowcase() {
                     sizes="100vw"
                     priority
                   />
-                  
+
                   {/* Navigation arrows */}
                   {selectedProduct.images.length > 1 && (
                     <>

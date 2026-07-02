@@ -1,44 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Icons } from "./Icons";
+
+const TECH_ICONS: Record<string, React.ElementType> = {
+  React: Icons.Code2,
+  TypeScript: Icons.Code2,
+  JavaScript: Icons.Code2,
+  Tailwind: Icons.Code2,
+  Python: Icons.Code2,
+  "Node.js": Icons.Code2,
+  Laravel: Icons.Code2,
+  PHP: Icons.Code2,
+  Flutter: Icons.Code2,
+  "React Native": Icons.Code2,
+  iOS: Icons.Code2,
+  Android: Icons.Code2,
+  MySQL: Icons.Cloud,
+  PostgreSQL: Icons.Cloud,
+  MongoDB: Icons.Cloud,
+  TensorFlow: Icons.BrainCircuit,
+};
+
+const TECH_COLORS: Record<string, string> = {
+  React: "from-cyan-400/20 to-cyan-500/5",
+  TypeScript: "from-blue-500/20 to-blue-600/5",
+  JavaScript: "from-yellow-400/20 to-yellow-500/5",
+  Tailwind: "from-teal-400/20 to-teal-500/5",
+  Python: "from-yellow-400/20 to-yellow-500/5",
+  "Node.js": "from-green-500/20 to-green-600/5",
+  Laravel: "from-red-500/20 to-red-600/5",
+  PHP: "from-indigo-400/20 to-indigo-500/5",
+  Flutter: "from-blue-400/20 to-blue-500/5",
+  "React Native": "from-cyan-500/20 to-cyan-600/5",
+  iOS: "from-gray-400/20 to-gray-500/5",
+  Android: "from-green-400/20 to-green-500/5",
+  MySQL: "from-blue-400/20 to-blue-500/5",
+  PostgreSQL: "from-blue-600/20 to-blue-700/5",
+  MongoDB: "from-green-500/20 to-green-600/5",
+  TensorFlow: "from-orange-500/20 to-orange-600/5",
+};
 
 const TECH_STACKS = [
   {
     category: "Frontend",
-    items: [
-      { name: "React", icon: "/tech/react.svg", color: "from-cyan-400/20 to-cyan-500/5" },
-      { name: "TypeScript", icon: "/tech/typescript.svg", color: "from-blue-500/20 to-blue-600/5" },
-      { name: "JavaScript", icon: "/tech/javascript.svg", color: "from-yellow-400/20 to-yellow-500/5" },
-      { name: "Tailwind", icon: "/fx/tailwind.png", color: "from-teal-400/20 to-teal-500/5" },
-    ],
+    items: ["React", "TypeScript", "JavaScript", "Tailwind"],
   },
   {
     category: "Backend",
-    items: [
-      { name: "Python", icon: "/tech/python.svg", color: "from-yellow-400/20 to-yellow-500/5" },
-      { name: "Node.js", icon: "/tech/nodejs.svg", color: "from-green-500/20 to-green-600/5" },
-      { name: "Laravel", icon: "/tech/laravel.svg", color: "from-red-500/20 to-red-600/5" },
-      { name: "PHP", icon: "/tech/php.svg", color: "from-indigo-400/20 to-indigo-500/5" },
-    ],
+    items: ["Python", "Node.js", "Laravel", "PHP"],
   },
   {
     category: "Mobile",
-    items: [
-      { name: "Flutter", icon: "/tech/flutter.svg", color: "from-blue-400/20 to-blue-500/5" },
-      { name: "React Native", icon: "/tech/react-native.svg", color: "from-cyan-500/20 to-cyan-600/5" },
-      { name: "iOS", icon: "/tech/ios.svg", color: "from-gray-400/20 to-gray-500/5" },
-      { name: "Android", icon: "/tech/android.svg", color: "from-green-400/20 to-green-500/5" },
-    ],
+    items: ["Flutter", "React Native", "iOS", "Android"],
   },
   {
     category: "Database & AI",
-    items: [
-      { name: "MySQL", icon: "/tech/mysql.svg", color: "from-blue-400/20 to-blue-500/5" },
-      { name: "PostgreSQL", icon: "/tech/postgresql.svg", color: "from-blue-600/20 to-blue-700/5" },
-      { name: "MongoDB", icon: "/tech/mongodb.svg", color: "from-green-500/20 to-green-600/5" },
-      { name: "TensorFlow", icon: "/tech/tensorflow.svg", color: "from-orange-500/20 to-orange-600/5" },
-    ],
+    items: ["MySQL", "PostgreSQL", "MongoDB", "TensorFlow"],
   },
 ];
 
@@ -113,39 +131,30 @@ export default function TechStack() {
 
                 {/* Tech items */}
                 <div className="grid grid-cols-2 gap-4">
-                  {stack.items.map((tech) => (
-                    <motion.div
-                      key={tech.name}
-                      className="group/tech relative flex flex-col items-center gap-3 rounded-xl border border-white/5 bg-gradient-to-b p-4 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-lg"
-                      style={{ background: `linear-gradient(180deg, ${tech.color.split(' ')[0]}, ${tech.color.split(' ')[1]})` }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {/* Tech icon */}
-                      <div className="relative h-12 w-12 rounded-lg bg-white/5 p-2 flex items-center justify-center overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover/tech:opacity-100 transition-opacity" />
-                        <Image
-                          src={tech.icon}
-                          alt={tech.name}
-                          width={40}
-                          height={40}
-                          className="object-contain relative z-10"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            target.parentElement!.innerHTML = `<span class="text-xs font-bold text-white/60">${tech.name.substring(0, 2).toUpperCase()}</span>`;
-                          }}
-                        />
-                      </div>
+                  {stack.items.map((tech) => {
+                    const IconComponent = TECH_ICONS[tech] || Icons.Code2;
+                    return (
+                      <motion.div
+                        key={tech}
+                        className={`group/tech relative flex flex-col items-center gap-3 rounded-xl border border-white/5 bg-gradient-to-b p-4 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:shadow-lg ${TECH_COLORS[tech] || "from-white/5 to-transparent"}`}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {/* Tech icon */}
+                        <div className="relative h-12 w-12 rounded-lg bg-white/5 p-2 flex items-center justify-center overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover/tech:opacity-100 transition-opacity" />
+                          <IconComponent className="h-5 w-5 text-white/60 relative z-10" />
+                        </div>
 
-                      {/* Tech name */}
-                      <span className="text-xs font-medium text-white/80 text-center">
-                        {tech.name}
-                      </span>
+                        {/* Tech name */}
+                        <span className="text-xs font-medium text-white/80 text-center">
+                          {tech}
+                        </span>
 
-                      {/* Hover glow */}
-                      <div className="pointer-events-none absolute -inset-1 rounded-xl bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover/tech:opacity-100 blur-lg transition-opacity" />
-                    </motion.div>
-                  ))}
+                        {/* Hover glow */}
+                        <div className="pointer-events-none absolute -inset-1 rounded-xl bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover/tech:opacity-100 blur-lg transition-opacity" />
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

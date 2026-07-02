@@ -97,7 +97,7 @@ const cardVariants = {
 
 export default function FeaturesGrid() {
   return (
-    <section id="features" className="relative px-4 py-20 sm:px-6 md:py-28">
+    <section id="features" className="relative px-4 py-24 sm:px-6 md:py-32">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-[100px]" />
@@ -105,7 +105,7 @@ export default function FeaturesGrid() {
       </div>
 
       <div className="mx-auto max-w-7xl relative z-10">
-        {/* Header - Enhanced */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function FeaturesGrid() {
           </p>
         </motion.div>
 
-        {/* Grid - Enhanced */}
+        {/* Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -150,9 +150,8 @@ export default function FeaturesGrid() {
                 style={{ background: `radial-gradient(200px at 50% 50%, ${feature.glow}, transparent 70%)` }}
               />
 
-              {/* Card */}
-              <div
-                className={`relative h-full overflow-hidden rounded-xl border bg-gradient-to-b ${feature.gradient} ${feature.border} p-6 transition-all duration-500 hover:shadow-[0_20px_60px_${feature.glow}]`}
+              {/* Card with gradient border */}
+              <div className="gradient-border-animated relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
                 style={{
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
@@ -176,7 +175,7 @@ export default function FeaturesGrid() {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  {/* Icon - Enhanced */}
+                  {/* Icon */}
                   <div className={`mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 ${feature.iconGlow} transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
                     <feature.icon className="h-5.5 w-5.5 text-white/90" />
                   </div>
