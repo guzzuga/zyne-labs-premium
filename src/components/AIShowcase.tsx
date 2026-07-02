@@ -64,22 +64,21 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
   },
 };
 
 function ShowcaseCard({ item }: { item: typeof SHOWCASE[0] }) {
-  const tiltRef = useTilt(5);
+  const tiltRef = useTilt(8);
 
   return (
     <div
       ref={tiltRef}
-      className={`tilt-card relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5 cursor-pointer`}
+      className={`tilt-card relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5`}
     >
       <div className="tilt-card-inner relative z-10">
         <div className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-white/5 border border-white/10">
@@ -130,7 +129,7 @@ export default function AIShowcase() {
               key={item.title}
               className={`group relative ${i === SHOWCASE.length - 1 ? "md:col-span-1 lg:col-span-2 md:col-start-2 lg:col-start-auto" : ""}`}
             >
-              <motion.div variants={cardVariants} className="h-full">
+              <motion.div variants={cardVariants}>
                 <ShowcaseCard item={item} />
               </motion.div>
             </div>
