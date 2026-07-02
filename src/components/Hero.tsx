@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import LiveTerminal from "./LiveTerminal";
+import { useTilt } from "@/hooks/useTilt";
 import { Icons } from "./Icons";
 
 const WA = "https://wa.me/6285729753619";
@@ -11,25 +12,29 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-36">
+    <section className="relative min-h-screen overflow-hidden px-4 pt-28 sm:px-6 md:pt-32">
       <div className="mx-auto max-w-7xl relative z-10">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          {/* LEFT */}
-          <div>
+        {/* ── BENTO GRID ── */}
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-12 md:grid-rows-[auto_1fr_auto] lg:grid-cols-12 lg:grid-rows-[auto_1fr_auto]">
+
+          {/* ── Row 1: Badge + Heading (span 8) + Terminal top (span 4) ── */}
+
+          {/* Main content cell */}
+          <motion.div
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="md:col-span-8 lg:col-span-8 flex flex-col justify-center"
+          >
             {/* Premium Badge */}
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="group relative inline-flex"
-            >
+            <div className="group relative inline-flex w-fit mb-6">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 via-purple-glow/20 to-cyan/30 blur-lg opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
               <div className="glass-strong relative inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-xs text-muted border border-white/10">
                 <span className="relative flex h-2 w-2">
@@ -40,15 +45,11 @@ export default function Hero() {
                   Premium AI Engineering Studio
                 </span>
               </div>
-            </motion.div>
+            </div>
 
             {/* Heading */}
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mt-10 text-[clamp(2.8rem,8vw,5rem)] font-bold leading-[0.9] tracking-tighter"
+            <h1
+              className="text-[clamp(2.8rem,8vw,5rem)] font-bold leading-[0.9] tracking-tighter"
               style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               <span className="block bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,255,255,0.1)]">
@@ -58,29 +59,17 @@ export default function Hero() {
               <span className="gradient-text block mt-2 bg-gradient-to-r from-white via-primary to-cyan bg-clip-text text-transparent drop-shadow-[0_0_60px_rgba(99,102,241,0.3)]">
                 Ship with Confidence.
               </span>
-            </motion.h1>
+            </h1>
 
             {/* Description */}
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mt-8 max-w-xl text-base leading-relaxed text-muted/90 md:text-lg"
-            >
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted/90 md:text-lg">
               We build premium AI-powered applications, intelligent systems, and
               automation solutions for forward-thinking businesses. From concept
               to deployment.
-            </motion.p>
+            </p>
 
             {/* CTAs */}
-            <motion.div
-              custom={3}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mt-10 flex flex-col gap-4 sm:flex-row"
-            >
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href={WA}
                 className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl overflow-hidden"
@@ -99,16 +88,35 @@ export default function Hero() {
                 <Icons.Play className="h-4 w-4 transition-transform group-hover:scale-110" />
                 View Our Work
               </a>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Trust Signals */}
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mt-14 flex flex-wrap items-center gap-6"
-            >
+          {/* Terminal cell (right side, row span 2) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, rotateY: -8 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.3,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="md:col-span-4 lg:col-span-4 md:row-span-2 relative perspective-1000"
+          >
+            <LiveTerminalShell />
+          </motion.div>
+
+          {/* ── Row 2: Trust + Stats (span 8) ── */}
+
+          {/* Trust signals cell */}
+          <motion.div
+            custom={4}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="md:col-span-8 lg:col-span-8 flex flex-col justify-end pb-4"
+          >
+            {/* Trust row */}
+            <div className="flex flex-wrap items-center gap-6 mb-8">
               <div className="flex -space-x-3">
                 {["#6366F1", "#8B5CF6", "#06B6D4", "#22C55E"].map((color, i) => (
                   <div
@@ -132,44 +140,18 @@ export default function Hero() {
                   <span className="text-white font-semibold">25+</span> clients trust us worldwide
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Stats */}
-            <motion.div
-              custom={5}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-10"
-            >
+            {/* Stats row — bento style */}
+            <div className="grid grid-cols-3 gap-3">
               {[
-                { value: "25+", label: "Clients Worldwide", sub: "Trusted partners" },
-                { value: "50+", label: "Projects Delivered", sub: "100% success" },
-                { value: "4.9", label: "Client Rating", sub: "Outstanding" },
+                { value: "25+", label: "Clients", sub: "Worldwide", gradient: "from-primary/20 to-primary/5" },
+                { value: "50+", label: "Projects", sub: "Delivered", gradient: "from-purple-glow/20 to-purple-glow/5" },
+                { value: "4.9", label: "Rating", sub: "Average", gradient: "from-cyan/20 to-cyan/5" },
               ].map((stat) => (
-                <div key={stat.label} className="group">
-                  <div className="text-3xl font-bold tracking-tight bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent group-hover:from-primary group-hover:to-cyan transition-all duration-500">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1.5 text-sm font-medium text-white/90">{stat.label}</div>
-                  <div className="mt-0.5 text-xs text-muted/60">{stat.sub}</div>
-                </div>
+                <StatCard key={stat.label} {...stat} />
               ))}
-            </motion.div>
-          </div>
-
-          {/* RIGHT: ZyneCode Product Preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95, rotateY: -10 }}
-            animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.4,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="relative perspective-1000"
-          >
-            <LiveTerminalShell />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -177,15 +159,30 @@ export default function Hero() {
   );
 }
 
+function StatCard({ value, label, sub, gradient }: { value: string; label: string; sub: string; gradient: string }) {
+  const tiltRef = useTilt(4);
+
+  return (
+    <div ref={tiltRef} className="tilt-card">
+      <div className={`tilt-card-inner relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b ${gradient} p-5 transition-all duration-300 hover:border-white/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)]`}>
+        <div className="text-3xl font-bold tracking-tight bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent">
+          {value}
+        </div>
+        <div className="mt-1 text-sm font-medium text-white/90">{label}</div>
+        <div className="mt-0.5 text-xs text-muted/60">{sub}</div>
+      </div>
+    </div>
+  );
+}
+
 function LiveTerminalShell() {
   return (
-    <div className="group relative">
+    <div className="group relative h-full">
       {/* Outer glow */}
       <div className="pointer-events-none absolute -inset-6 rounded-[32px] bg-gradient-to-br from-primary/12 via-purple-glow/8 to-cyan/8 opacity-40 blur-3xl animate-pulse-slow" />
-      <div className="pointer-events-none absolute -inset-4 rounded-[28px] bg-gradient-to-tr from-primary/8 via-transparent to-cyan/8 opacity-20 blur-2xl" />
 
       {/* Terminal shell */}
-      <div className="glass-strong relative overflow-hidden rounded-3xl md:rounded-[32px] border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]">
+      <div className="glass-strong relative h-full overflow-hidden rounded-3xl md:rounded-[32px] border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.12),transparent_60%)]" />
 
         {/* Top bar */}
@@ -203,7 +200,7 @@ function LiveTerminalShell() {
         </div>
 
         {/* Live terminal area */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative flex-1 overflow-hidden" style={{ minHeight: 0 }}>
           <LiveTerminal />
         </div>
 

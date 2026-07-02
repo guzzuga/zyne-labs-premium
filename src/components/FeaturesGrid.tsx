@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTilt } from "@/hooks/useTilt";
 import { Icons } from "./Icons";
 
 const FEATURES = [
@@ -130,33 +131,33 @@ export default function FeaturesGrid() {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {FEATURES.map((feature) => (
-            <motion.div
-              key={feature.title}
-              variants={cardVariants}
-              className="group relative"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {/* Card */}
-              <div className="gradient-border-animated relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all duration-300 hover:border-white/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 transition-transform duration-300 group-hover:scale-110">
-                    <feature.icon className="h-5.5 w-5.5 text-white/90" />
-                  </div>
+          {FEATURES.map((feature) => {
+              const tiltRef = useTilt(6);
+              return (
+                <motion.div
+                  key={feature.title}
+                  variants={cardVariants}
+                  className="group relative"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div ref={tiltRef} className="tilt-card gradient-border-animated relative h-full overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all duration-300 hover:border-white/10 hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+                    <div className="tilt-card-inner relative z-10">
+                      <div className="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 transition-transform duration-300 group-hover:scale-110">
+                        <feature.icon className="h-5.5 w-5.5 text-white/90" />
+                      </div>
 
-                  <h3 className="text-lg font-semibold bg-gradient-to-br from-white to-white/70 bg-clip-text text-transparent">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-muted/80">
-                    {feature.desc}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                      <h3 className="text-lg font-semibold bg-gradient-to-br from-white to-white/70 bg-clip-text text-transparent">
+                        {feature.title}
+                      </h3>
+                      <p className="mt-2.5 text-sm leading-relaxed text-muted/80">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
         </motion.div>
       </div>
     </section>

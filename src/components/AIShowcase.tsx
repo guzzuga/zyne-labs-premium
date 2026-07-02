@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTilt } from "@/hooks/useTilt";
 import { Icons } from "./Icons";
 
 const SHOWCASE = [
@@ -101,32 +102,33 @@ export default function AIShowcase() {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         >
-          {SHOWCASE.map((item, i) => (
-            <motion.div
-              key={item.title}
-              variants={cardVariants}
-              className={`group relative ${i === SHOWCASE.length - 1 ? "md:col-span-1 lg:col-span-2 md:col-start-2 lg:col-start-auto" : ""}`}
-            >
-              <div
-                className={`relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl`}
+          {SHOWCASE.map((item, i) => {
+            const tiltRef = useTilt(5);
+            return (
+              <motion.div
+                key={item.title}
+                variants={cardVariants}
+                className={`group relative ${i === SHOWCASE.length - 1 ? "md:col-span-1 lg:col-span-2 md:col-start-2 lg:col-start-auto" : ""}`}
               >
-                {/* Hover shine */}
-                <div className="pointer-events-none absolute -inset-20 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                <div className="relative z-10">
-                  <div className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-white/5 border border-white/10">
-                    <item.icon className="h-4.5 w-4.5 text-white/80" />
+                <div
+                  ref={tiltRef}
+                  className={`tilt-card relative h-full overflow-hidden rounded-2xl border bg-gradient-to-b ${item.gradient} ${item.border} p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
+                >
+                  <div className="tilt-card-inner relative z-10">
+                    <div className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-white/5 border border-white/10">
+                      <item.icon className="h-4.5 w-4.5 text-white/80" />
+                    </div>
+                    <h3 className="text-base font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                    {item.desc}
-                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
