@@ -20,9 +20,9 @@ export default function TrustMarquee() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mono mb-8 text-center text-[11px] tracking-[0.24em] text-muted"
+          className="mono mb-8 text-center text-[11px] tracking-[0.24em] text-white/90"
         >
-          TRUSTED BY MODERN TEAMS
+          TRUSTED BY MODERN TECH
         </motion.p>
 
         <div className="glass relative overflow-hidden rounded-2xl py-6 md:py-8">
@@ -43,18 +43,18 @@ export default function TrustMarquee() {
               {[...LOGOS, ...LOGOS].map((logo, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  className="flex items-center gap-3 opacity-90 hover:opacity-100 transition-opacity duration-300"
                 >
                   <div className="relative h-8 w-8 md:h-10 md:w-10">
                     <Image
                       src={logo.src}
                       alt={logo.label}
                       fill
-                      className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      className="object-contain filter grayscale-0 hover:grayscale-0 transition-all duration-300"
                       sizes="(max-width: 768px) 32px, 40px"
                     />
                   </div>
-                  <span className="whitespace-nowrap text-sm font-medium text-muted/80">
+                  <span className="whitespace-nowrap text-sm font-medium text-white/90">
                     {logo.label}
                   </span>
                 </div>
