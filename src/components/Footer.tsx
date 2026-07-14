@@ -52,7 +52,7 @@ export default function Footer() {
               <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-purple-glow">
                 <Icons.Sparkles className="h-4 w-4 text-white" />
               </div>
-              <div className="text-sm font-semibold">Zyne Labs</div>
+              <div className="text-sm font-semibold">ZyneCode</div>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               Premium AI engineering studio building intelligent applications,
@@ -122,7 +122,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-muted md:flex-row">
-          <p>&copy; {new Date().getFullYear()} Zyne Labs Studio. Built with care.</p>
+          <p>&copy; {new Date().getFullYear()} ZyneCode Studio. Built with care.</p>
           <p className="mono tracking-[0.22em]">
             PREMIUM AI ENGINEERING
           </p>

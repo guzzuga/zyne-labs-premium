@@ -53,7 +53,7 @@ export default function Nav() {
             <div className="relative h-9 w-9 overflow-hidden rounded-xl shadow-lg shadow-primary/20 ring-1 ring-white/10">
               <Image
                 src="/zyne-logo.png"
-                alt="Zyne Labs Logo"
+                alt="ZyneCode Logo"
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
                 sizes="36px"
@@ -62,7 +62,7 @@ export default function Nav() {
             </div>
             <div className="leading-tight">
               <div className="text-sm font-bold tracking-tight text-white">
-                Zyne Labs
+                ZyneCode
               </div>
               <div className="mono text-[9px] tracking-[0.25em] text-muted/70">
                 STUDIO

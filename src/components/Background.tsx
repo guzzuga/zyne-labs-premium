@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
    Premium Aurora Background + Lightweight Particles
 
    5 CSS blobs for aurora effect + canvas particles for
-   subtle "neural network" feel — AI aesthetic for Zyne Labs.
+   subtle "neural network" feel — AI aesthetic for ZyneCode.
 
    Particles: ~30 dots, connecting lines within 120px.
    Single RAF loop, ~0.1ms per frame.

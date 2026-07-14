@@ -22,7 +22,7 @@ export default function About() {
               <div className="absolute inset-0 rounded-[32px]">
                 <Image
                   src="/zyne-logo.png"
-                  alt="Zyne Labs Logo"
+                  alt="ZyneCode Logo"
                   fill
                   className="object-cover rounded-[32px] opacity-40"
                   priority

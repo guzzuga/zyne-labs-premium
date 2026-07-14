@@ -1,4 +1,4 @@
-# Zyne Labs Studio — Premium Portfolio
+# ZyneCode Studio — Premium Portfolio
 
 Versi ini dibuat supaya tampilan lebih **premium** tanpa menghapus identitas desain inti (GIF FX, stack icons, layout utama). Animasi menggunakan **GSAP + ScrollTrigger** (lebih aman untuk Next.js App Router).
 

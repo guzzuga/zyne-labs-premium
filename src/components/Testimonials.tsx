@@ -10,7 +10,7 @@ const TESTIMONIALS = [
     avatar: "AP",
     rating: 5,
     quote:
-      "Zyne Labs delivered an AI-powered dashboard that transformed how we analyze customer data. The team's attention to detail and understanding of our needs was exceptional.",
+      "ZyneCode delivered an AI-powered dashboard that transformed how we analyze customer data. The team's attention to detail and understanding of our needs was exceptional.",
   },
   {
     name: "Siti Rahmawati",
@@ -28,7 +28,7 @@ const TESTIMONIALS = [
     avatar: "BS",
     rating: 5,
     quote:
-      "Working with Zyne Labs was a game-changer. They didn't just build what we asked for — they suggested improvements that made our product significantly better.",
+      "Working with ZyneCode was a game-changer. They didn't just build what we asked for — they suggested improvements that made our product significantly better.",
   },
 ];
 

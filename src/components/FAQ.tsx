@@ -6,7 +6,7 @@ import { Icons } from "./Icons";
 
 const FAQS = [
   {
-    q: "What services does Zyne Labs offer?",
+    q: "What services does ZyneCode offer?",
     a: "We specialize in AI-powered application development, custom software engineering, workflow automation, API integration, and UI/UX design. From concept to deployment, we build solutions that scale.",
   },
   {

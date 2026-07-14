@@ -20,7 +20,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Zyne Labs Studio — Premium AI Engineering",
+  title: "ZyneCode Studio — Premium AI Engineering",
   description:
     "We build premium AI-powered applications, intelligent systems, and automation solutions for forward-thinking businesses. Software & AI Development Studio based in Indonesia.",
   keywords: [
@@ -35,16 +35,16 @@ export const metadata = {
   ],
   metadataBase: new URL("https://zynelabs.studio"),
   openGraph: {
-    title: "Zyne Labs Studio — Premium AI Engineering",
+    title: "ZyneCode Studio — Premium AI Engineering",
     description:
       "We build premium AI-powered applications, intelligent systems, and automation solutions.",
     url: "https://zynelabs.studio",
     type: "website",
-    siteName: "Zyne Labs Studio",
+    siteName: "ZyneCode Studio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zyne Labs Studio — Premium AI Engineering",
+    title: "ZyneCode Studio — Premium AI Engineering",
     description:
       "We build premium AI-powered applications, intelligent systems, and automation solutions.",
   },
@@ -81,7 +81,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              name: "Zyne Labs Studio",
+              name: "ZyneCode Studio",
               description:
                 "Premium AI engineering studio building intelligent applications, systems, and automation for forward-thinking businesses.",
               url: "https://zynelabs.studio",
