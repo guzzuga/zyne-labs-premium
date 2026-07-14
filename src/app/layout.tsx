@@ -33,12 +33,12 @@ export const metadata = {
     "Indonesia",
     "premium development",
   ],
-  metadataBase: new URL("https://zynelabs.studio"),
+  metadataBase: new URL("https://zynecode.web.id"),
   openGraph: {
     title: "ZyneCode Studio — Premium AI Engineering",
     description:
       "We build premium AI-powered applications, intelligent systems, and automation solutions.",
-    url: "https://zynelabs.studio",
+    url: "https://zynecode.web.id",
     type: "website",
     siteName: "ZyneCode Studio",
   },
@@ -84,9 +84,9 @@ export default function RootLayout({
               name: "ZyneCode Studio",
               description:
                 "Premium AI engineering studio building intelligent applications, systems, and automation for forward-thinking businesses.",
-              url: "https://zynelabs.studio",
-              logo: "https://zynelabs.studio/zyne-logo.png",
-              image: "https://zynelabs.studio/zyne-logo.png",
+              url: "https://zynecode.web.id",
+              logo: "https://zynecode.web.id/zyne-logo.png",
+              image: "https://zynecode.web.id/zyne-logo.png",
               sameAs: [
                 "https://github.com/guzzuga",
                 "https://www.linkedin.com/in/agus-efendi-45645a18a",

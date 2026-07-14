@@ -85,11 +85,11 @@ export default function FinalCTA() {
               <Icons.ArrowUpRight className="h-4 w-4" />
             </a>
             <a
-              href="mailto:hello@zynelabs.studio"
+              href="mailto:hello@zynecode.web.id"
               className="btn-secondary inline-flex items-center gap-2 px-8 py-3.5 text-base text-white"
             >
               <Icons.Mail className="h-4 w-4" />
-              hello@zynelabs.studio
+              hello@zynecode.web.id
             </a>
           </motion.div>
         </div>
