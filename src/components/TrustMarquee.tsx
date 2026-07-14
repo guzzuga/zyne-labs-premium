@@ -45,12 +45,12 @@ export default function TrustMarquee() {
                   key={i}
                   className="flex items-center gap-3 opacity-90 hover:opacity-100 transition-opacity duration-300"
                 >
-                  <div className="relative h-8 w-8 md:h-10 md:w-10">
+                  <div className="relative h-8 w-8 md:h-10 md:w-10 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10">
                     <Image
                       src={logo.src}
                       alt={logo.label}
                       fill
-                      className="object-contain filter grayscale-0 hover:grayscale-0 transition-all duration-300"
+                      className="object-contain filter brightness-150 transition-all duration-300"
                       sizes="(max-width: 768px) 32px, 40px"
                     />
                   </div>
