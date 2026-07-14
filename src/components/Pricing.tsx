@@ -8,7 +8,7 @@ const PLANS = [
   {
     name: "Starter",
     desc: "Perfect for early-stage startups and small projects.",
-    price: { monthly: 299, yearly: 2990 },
+    price: { monthly: 99, yearly: 990 },
     features: [
       "1 AI Agent",
       "5K API requests/month",
@@ -22,7 +22,7 @@ const PLANS = [
   {
     name: "Growth",
     desc: "Ideal for growing businesses scaling their AI infrastructure.",
-    price: { monthly: 799, yearly: 7990 },
+    price: { monthly: 299, yearly: 2990 },
     features: [
       "5 AI Agents",
       "50K API requests/month",
@@ -37,7 +37,7 @@ const PLANS = [
   {
     name: "Enterprise",
     desc: "For organizations needing custom solutions and dedicated support.",
-    price: { monthly: 1999, yearly: 19990 },
+    price: { monthly: 999, yearly: 9990 },
     features: [
       "Unlimited AI Agents",
       "Unlimited API requests",
