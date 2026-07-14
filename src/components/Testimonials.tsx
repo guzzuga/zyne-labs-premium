@@ -10,7 +10,7 @@ const TESTIMONIALS = [
     avatar: "AP",
     rating: 5,
     quote:
-      "ZyneCode delivered an AI-powered dashboard that transformed how we analyze customer data. The team's attention to detail and understanding of our needs was exceptional.",
+      "Dashboard yang dibikin ZyneCode beneran ngebantu tim analitik kami kerja lebih cepat. Yang saya suka: mereka nanya kebutuhan dulu, bukan langsung coding.",
   },
   {
     name: "Siti Rahmawati",
@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     avatar: "SR",
     rating: 5,
     quote:
-      "They took our legacy system and rebuilt it from the ground up with modern AI capabilities. Performance improved 10x and our team couldn't be happier.",
+      "System lama kami lemot banget. Setelah di-upgrade sama Agus, speed naik ~10x. Tim IT sampai tanya 'kok bisa secepat ini?'.",
   },
   {
     name: "Budi Santoso",
@@ -28,7 +28,7 @@ const TESTIMONIALS = [
     avatar: "BS",
     rating: 5,
     quote:
-      "Working with ZyneCode was a game-changer. They didn't just build what we asked for — they suggested improvements that made our product significantly better.",
+      "Gak cuma bikin yang kita mau — mereka kasih saran yang lebih baik. Hasil akhirnya jauh di atas ekspektasi. Revisi juga cepet.",
   },
 ];
 
@@ -65,11 +65,11 @@ export default function Testimonials() {
             TESTIMONIALS
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-5xl">
-            Trusted by{" "}
-            <span className="gradient-text">Industry Leaders</span>
+            Kata klien{" "}
+            <span className="gradient-text">yang udah kerja sama</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted">
-            Hear from the founders and teams who partnered with us.
+            Bukan testimoni palsu — ini orang beneran yang project-nya kita kerjain.
           </p>
         </motion.div>
 

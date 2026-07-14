@@ -37,7 +37,7 @@ export default function FinalCTA() {
             viewport={{ once: true }}
             className="mono text-[11px] tracking-[0.24em] text-white/70"
           >
-            LET&apos;S BUILD
+            LET&apos;S TALK
           </motion.p>
 
           <motion.h2
@@ -48,9 +48,9 @@ export default function FinalCTA() {
             className="mt-5 text-4xl font-bold tracking-tight md:text-6xl"
             style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
-            Ready to Build Your
+            Punya ide project?
             <br />
-            <span className="text-white">Next Big Idea?</span>
+            <span className="text-white">Yuk diskusi dulu.</span>
           </motion.h2>
 
           <motion.p
@@ -60,8 +60,7 @@ export default function FinalCTA() {
             transition={{ delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/70"
           >
-            Let&apos;s talk about your project. No obligation, just a
-            conversation about what&apos;s possible.
+            Gak perlu detail — ceritain aja ide lo. Nanti kita kasih saran teknis, estimasi waktu, dan harga. Gratis, no obligation.
           </motion.p>
 
           <motion.div

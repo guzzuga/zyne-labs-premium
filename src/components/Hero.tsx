@@ -42,7 +42,7 @@ export default function Hero() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_20px_rgba(99,102,241,0.8)]" />
                 </span>
                 <span className="bg-gradient-to-r from-white via-primary-100 to-white bg-clip-text text-transparent">
-                  Premium AI Engineering Studio
+                  AI studio from Mojokerto
                 </span>
               </div>
             </div>
@@ -53,19 +53,18 @@ export default function Hero() {
               style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               <span className="block bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                Build Premium AI.
+                We build AI
               </span>
               <br />
               <span className="gradient-text block mt-2 bg-gradient-to-r from-white via-primary to-cyan bg-clip-text text-transparent drop-shadow-[0_0_60px_rgba(99,102,241,0.3)]">
-                Ship with Confidence.
+                that actually ships.
               </span>
             </h1>
 
             {/* Description */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted/90 md:text-lg">
-              We build premium AI-powered applications, intelligent systems, and
-              automation solutions for forward-thinking businesses. From concept
-              to deployment.
+              Kami bantu bisnis bikin aplikasi AI, sistem otomatis, dan integrasi
+              yang beneran jalan di produksi — bukan cuma demo yang bagus pas presentasi.
             </p>
 
             {/* CTAs */}

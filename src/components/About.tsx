@@ -128,44 +128,43 @@ export default function About() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 sm:h-2 w-1.5 sm:w-2 bg-primary" />
               </span>
-              About Me
+              So what I do
             </div>
 
             {/* Heading */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6">
               <span className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
-                Hi, I'm
+                I'm Agus,
               </span>{" "}
               <span className="gradient-text bg-gradient-to-r from-primary via-purple-glow to-cyan bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-                Agus Efendi
+                founder & dev
               </span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl text-muted/90 font-light mb-6 sm:mb-8 leading-relaxed">
-              Founder of{" "}
-              <span className="text-white font-semibold">Zynecode Studio</span> — a premium AI engineering
-              studio based in Mojokerto, Indonesia.
+              Founder <span className="text-white font-semibold">ZyneCode Studio</span> —
+              bikin software dan AI buat klien di Indonesia dan luar negeri.
             </p>
 
             {/* Description */}
             <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted/80 leading-relaxed mb-6 sm:mb-8">
               <p>
-                I specialize in building{" "}
-                <span className="text-white font-medium">AI powered applications</span>,{" "}
-                <span className="text-white font-medium">intelligent systems</span>, and{" "}
-                <span className="text-white font-medium">automation solutions</span>{" "}
-                for forward thinking businesses worldwide.
+                Fokus saya bikin{" "}
+                <span className="text-white font-medium">aplikasi AI</span>,
+                {" "}
+                <span className="text-white font-medium">sistem otomatis</span>, dan
+                {" "}
+                <span className="text-white font-medium">integrasi backend</span>
+                yang beneran dipakai user sehari-hari, bukan cuma POC.
               </p>
               <p>
-                With over 5 years of experience in software development, I've helped 25+ clients{" "}
-                transform their ideas into scalable, production ready solutions using cutting edge{" "}
-                technologies like React, Python, TensorFlow, and cloud infrastructure.
+                Pengalaman lebih dari 5 tahun — udah bantu 25+ klien dari startup sampai perusahaan besar.
+                Stack favorit: React, Next.js, Python, Laravel. Kalau project butuh ML, pake TensorFlow.
               </p>
               <p>
-                My passion lies in bridging the gap between complex AI technology and real world{" "}
-                business applications, making advanced technology accessible and practical for{" "}
-                businesses of all sizes.
+                Prinsip saya simpel: kode yang bagus itu yang bisa dijaga tim lain setelah saya pergi.
+                Dokumentasi jelas, struktur rapi, dan jangan bikin hal yang bisa简单.
               </p>
             </div>
 

@@ -8,42 +8,42 @@ const FEATURES = [
   {
     icon: Icons.BrainCircuit,
     title: "AI Agents",
-    desc: "Autonomous AI agents that learn, reason, and act on your business data in real-time.",
+    desc: "Bot yang bisa mikir & kerja sendiri: baca data, kasih rekomendasi, jalanin task rutin tanpa diawasin.",
   },
   {
     icon: Icons.Workflow,
     title: "Workflow Automation",
-    desc: "Complex multi-step automation pipelines that eliminate manual work and reduce errors.",
+    desc: "Hubungin tool-tool lo (email, sheet, CRM) biar kerjaan berulang jalan sendiri. Hemat jam tiap minggu.",
   },
   {
     icon: Icons.BookOpen,
     title: "Knowledge Base",
-    desc: "Intelligent document processing and RAG-powered knowledge retrieval systems.",
+    desc: "Upload dokumen perusahaan, nanti AI yang jawab pertanyaan tim. Gak perlu cari manual di folder berantakan.",
   },
   {
     icon: Icons.GitBranch,
     title: "API Integration",
-    desc: "Seamless third-party API integration and custom middleware for any platform.",
+    desc: "Mau nyambungin payment, WhatsApp, atau ERP lama? Kita bikin middleware biar semua ngomong satu bahasa.",
   },
   {
     icon: Icons.Shield,
-    title: "Enterprise Security",
-    desc: "SOC 2 compliant infrastructure with end-to-end encryption and audit logging.",
+    title: "Security & Auth",
+    desc: "Login aman, data terenkripsi, audit trail jelas. Cocok buat klien yang data-nya sensitif.",
   },
   {
     icon: Icons.BarChart3,
-    title: "Analytics & Insights",
-    desc: "Real-time dashboards with custom metrics, predictive analytics, and anomaly detection.",
+    title: "Dashboard & Report",
+    desc: "Satu layar buat pantau metric penting. Auto-refresh, bisa export, gak usah buka 5 tab sekaligus.",
   },
   {
     icon: Icons.Cloud,
-    title: "Cloud Infrastructure",
-    desc: "Scalable cloud-native architecture deployed across AWS, GCP, or Azure.",
+    title: "Cloud Deploy",
+    desc: "App lo ditaruh di AWS / GCP / Vercel — auto-scale kalau trafik naik, gak panic pas viral.",
   },
   {
     icon: Icons.Code2,
-    title: "Developer SDK",
-    desc: "Type-safe SDKs and comprehensive developer tools for rapid integration.",
+    title: "Clean Codebase",
+    desc: "Kode rapi & kebabiasaan standar industri. Tim lo bisa lanjutin tanpa harus nebak-nebak logika saya.",
   },
 ];
 
@@ -104,14 +104,14 @@ export default function FeaturesGrid() {
           </p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
             <span className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
-              Enterprise-Grade
+              Yang bisa
             </span>{" "}
             <span className="gradient-text bg-gradient-to-r from-primary via-purple-glow to-cyan bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-              AI Infrastructure
+              kami kerjain
             </span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted/90">
-            Everything you need to build, deploy, and scale AI-powered applications.
+            Dari ide di napkin sampai app yang dipakai user beneran. Ini range yang biasa kita ambil.
           </p>
         </motion.div>
 

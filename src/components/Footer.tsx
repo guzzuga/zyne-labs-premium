@@ -55,8 +55,7 @@ export default function Footer() {
               <div className="text-sm font-semibold">ZyneCode</div>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Premium AI engineering studio building intelligent applications,
-              systems, and automation for forward-thinking businesses.
+              Bikin AI app, software, dan automasi buat bisnis yang mau naik level. Mojokerto, bisa kerja remote.
             </p>
 
             {/* Social */}

@@ -6,28 +6,28 @@ import { Icons } from "./Icons";
 
 const FAQS = [
   {
-    q: "What services does ZyneCode offer?",
-    a: "We specialize in AI-powered application development, custom software engineering, workflow automation, API integration, and UI/UX design. From concept to deployment, we build solutions that scale.",
+    q: "Service apa aja yang ZyneCode terima?",
+    a: "Kalo lo butuh app AI, sistem otomatis, integrasi API, atau landing page — kita bisa. Intinya: project yang butuh coding (Python, React, Laravel, Flutter, dll), kita handle semua.",
   },
   {
-    q: "How long does a typical project take?",
-    a: "Timeline depends on complexity. A standard web application takes 4-8 weeks, while larger AI systems may take 8-16 weeks. We provide a clear timeline during the initial consultation.",
+    q: "Berapa lama satu project?",
+    a: "Tergesar kompleksitasnya. Landing page bisa 1-2 minggu. Web app biasa 4-8 minggu. Kalau ada AI/ML, mungkin 2-4 bulan. Kita kasih timeline detail pas konsultasi awal.",
   },
   {
-    q: "Do you offer post-launch support?",
-    a: "Yes. Every project includes 30 days of post-launch support. We also offer ongoing maintenance, monitoring, and feature enhancement retainers for long-term partnerships.",
+    q: "Ada maintenance setelah app jadi?",
+    a: "Iya, tiap project dapat 30 hari free support. Abis itu kita punya paket maintenance bulanan (update bug, fitur baru, monitoring server). Gak ngingetin — tinggal WA.",
   },
   {
-    q: "Can you work with existing codebases?",
-    a: "Absolutely. Our Project Takeover service is designed for exactly this — we audit, refactor, and extend existing codebases with fresh features and modern best practices.",
+    q: "Bisa kerjain project yang udah ada?",
+    a: "Bisa banget. Banyak klien dateng sama project yang udah setengah jadi atau punya bug nyeleneh. Kita review, perbaiki, dan lanjutin. Gak masalah.",
   },
   {
-    q: "What technologies do you use?",
-    a: "Our stack includes React, Next.js, Laravel, Node.js, Python, Flutter, and various AI/ML frameworks. We choose the best technology for each project's specific requirements.",
+    q: "Tech stack-nya pake apa aja?",
+    a: "React, Next.js, Laravel, Node.js, Python, Flutter — itu yang paling sering. Kalau butuh ML, pake TensorFlow. Pilih teknologi berdasarkan apa yang paling cocok sama project, bukan karena kita ngefanboy sama satu framework.",
   },
   {
-    q: "How do you handle data security?",
-    a: "Security is paramount. We implement OWASP best practices, end-to-end encryption, secure authentication, and comply with data protection regulations. Enterprise clients get additional security audits.",
+    q: "Bagaimana soal keamanan data?",
+    a: "Login pake bcrypt, database dienkripsi, HTTPS wajib. Klien enterprise dapat tambahan: audit trail, RBAC, dan pen testing. Gak main-main soal data orang.",
   },
 ];
 
@@ -47,8 +47,8 @@ export default function FAQ() {
             FAQ
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-5xl">
-            Frequently Asked{" "}
-            <span className="gradient-text">Questions</span>
+            Yang sering ditanya{" "}
+            <span className="gradient-text">sebelum mulai</span>
           </h2>
         </motion.div>
 

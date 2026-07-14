@@ -8,9 +8,9 @@ import { Icons } from "./Icons";
 const PRODUCTS = [
   {
     id: 1,
-    title: "AI Dashboard Platform",
+    title: "Dashboard Analytics AI",
     category: "AI & Machine Learning",
-    description: "Real-time AI analytics dashboard with predictive insights and automated reporting.",
+    description: "Pantau data customer, prediksi tren, dan generate report otomatis — tinggal buka satu layar.",
     image: "/works/dashboard-1.jpg",
     images: ["/works/dashboard-1.jpg", "/works/dashboard-2.jpg", "/works/dashboard-3.jpg"],
     tags: ["React", "Python", "TensorFlow", "PostgreSQL"],
@@ -21,7 +21,7 @@ const PRODUCTS = [
     id: 2,
     title: "Mobile Banking App",
     category: "Mobile Development",
-    description: "Secure mobile banking solution with biometric authentication and real-time transactions.",
+    description: "Transfer, cek saldo, scan QRIS — semua dalam satu app. Login via fingerprint, transaksi aman.",
     image: "/works/mobile-1.jpg",
     images: ["/works/mobile-1.jpg", "/works/mobile-2.jpg", "/works/mobile-3.jpg"],
     tags: ["Flutter", "Node.js", "MongoDB", "Firebase"],
@@ -30,9 +30,9 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    title: "AI Chat Assistant",
+    title: "AI Chat Support",
     category: "AI & Automation",
-    description: "Intelligent chatbot with natural language processing and context-aware responses.",
+    description: "Bot yang bales chat customer 24/7. Ngerti konteks, bisa escalate ke admin kalau stuck.",
     image: "/works/ai-1.jpg",
     images: ["/works/ai-1.jpg", "/works/ai-2.jpg", "/works/ai-3.jpg"],
     tags: ["Python", "OpenAI", "FastAPI", "Redis"],
@@ -41,9 +41,9 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    title: "Enterprise Backend System",
+    title: "Sistem Backend Perusahaan",
     category: "Backend Infrastructure",
-    description: "Scalable microservices architecture handling millions of requests daily.",
+    description: "Arsitektur microservices yang handle ribuan request per menit. Auto-scale, zero downtime.",
     image: "/works/backend-1.jpg",
     images: ["/works/backend-1.jpg", "/works/backend-2.jpg", "/works/backend-3.jpg"],
     tags: ["Laravel", "MySQL", "Docker", "Kubernetes"],
@@ -52,9 +52,9 @@ const PRODUCTS = [
   },
   {
     id: 5,
-    title: "System Monitoring Dashboard",
+    title: "Monitoring Server",
     category: "DevOps & Monitoring",
-    description: "Real-time system health monitoring with alerts and performance analytics.",
+    description: "Pantau CPU, memory, disk, dan response time. Kalau down, langsung dapat alert di HP.",
     image: "/works/system1.jpg",
     images: ["/works/system1.jpg", "/works/system2.jpg", "/works/system3.jpg"],
     tags: ["React", "Node.js", "Grafana", "Prometheus"],
@@ -63,9 +63,9 @@ const PRODUCTS = [
   },
   {
     id: 6,
-    title: "Customer Support Platform",
+    title: "Platform Support Ticket",
     category: "Customer Experience",
-    description: "Omnichannel support system with AI-powered ticket routing and automation.",
+    description: "AI auto-sort tiket, assign ke tim yang pas, dan kasih status update ke customer otomatis.",
     image: "/works/support-1.jpg",
     images: ["/works/support-1.jpg", "/works/support-2.jpg", "/works/support-3.jpg"],
     tags: ["Vue.js", "Python", "PostgreSQL", "WebSocket"],
@@ -100,14 +100,14 @@ export default function ProductShowcase() {
           </p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
             <span className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
-              Featured
+              Project yang
             </span>{" "}
             <span className="gradient-text bg-gradient-to-r from-primary via-purple-glow to-cyan bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-              Products
+              udah kita rilis
             </span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted/90">
-            Real products we've built for clients worldwide. Each solution crafted with precision and care.
+            Bukan template — ini beneran produk yang kita bangun buat klien. Klik buat lihat detail.
           </p>
         </motion.div>
 

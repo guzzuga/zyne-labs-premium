@@ -88,14 +88,14 @@ export default function Pricing() {
           </p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
             <span className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-transparent">
-              Simple, Transparent
+              Harga
             </span>{" "}
             <span className="gradient-text bg-gradient-to-r from-primary via-purple-glow to-cyan bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-              Pricing
+              yang masuk akal
             </span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted/90">
-            No hidden fees. Scale your AI infrastructure as you grow.
+            Gak ada biaya tersembunyi. Pilih paket, kalau kurang tinggal upgrade.
           </p>
 
           {/* Toggle - Enhanced */}
@@ -184,8 +184,8 @@ export default function Pricing() {
           transition={{ delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-sm text-muted/60 mb-2">30-day money-back guarantee · No credit card required</p>
-          <p className="text-xs text-muted/40">All prices in USD. Cancel anytime.</p>
+          <p className="text-sm text-muted/60 mb-2">Garansi 30 hari uang kembali · Gak perlu kartu kredit</p>
+          <p className="text-xs text-muted/40">Semua harga dalam USD. Berhenti kapan aja, gak ada lock-in.</p>
         </motion.div>
       </div>
     </section>
