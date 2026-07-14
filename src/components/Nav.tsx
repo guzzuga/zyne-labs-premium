@@ -14,7 +14,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-const WA = "https://wa.me/6285729753619";
+const WA = "https://wa.me/6287874722632";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);

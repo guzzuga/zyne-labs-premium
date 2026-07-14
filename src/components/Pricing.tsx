@@ -234,7 +234,7 @@ function PricingCard({
       </ul>
 
       <a
-        href="https://wa.me/6285729753619"
+        href="https://wa.me/6287874722632"
         className={
           popular
             ? "btn-primary mt-8 flex items-center justify-center py-3.5 text-sm font-semibold rounded-xl"

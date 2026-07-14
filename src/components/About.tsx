@@ -204,7 +204,7 @@ export default function About() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
               <a
-                href="https://wa.me/6285729753619"
+                href="https://wa.me/6287874722632"
                 className="group relative inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-semibold rounded-xl overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-glow to-primary bg-[length:200%_100%] animate-gradient-shift" />

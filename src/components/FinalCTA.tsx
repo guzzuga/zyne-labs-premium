@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Icons } from "./Icons";
 
-const WA = "https://wa.me/6285729753619";
+const WA = "https://wa.me/6287874722632";
 
 export default function FinalCTA() {
   return (

@@ -95,7 +95,7 @@ export default function RootLayout({
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+6285729753619",
+                telephone: "+6287874722632",
                 contactType: "sales",
                 areaServed: "Worldwide",
                 availableLanguage: ["English", "Indonesian"],

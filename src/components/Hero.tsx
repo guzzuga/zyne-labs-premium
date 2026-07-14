@@ -5,7 +5,7 @@ import LiveTerminal from "./LiveTerminal";
 import { useTilt } from "@/hooks/useTilt";
 import { Icons } from "./Icons";
 
-const WA = "https://wa.me/6285729753619";
+const WA = "https://wa.me/6287874722632";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },

@@ -312,7 +312,7 @@ export default function ProductShowcase() {
                   {/* CTA */}
                   <div className="mt-8 flex gap-4">
                     <a
-                      href="https://wa.me/6285729753619"
+                      href="https://wa.me/6287874722632"
                       className="btn-primary flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold"
                     >
                       Start Similar Project
